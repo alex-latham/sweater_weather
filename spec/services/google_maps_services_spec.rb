@@ -8,20 +8,9 @@ RSpec.describe GoogleMapsServices do
       geocoding_json = GoogleMapsServices.new.get_geocoding(location)
 
       expect(geocoding_json[:status]).to eq("OK")
-      expect(geocoding_json[:results][0][:formatted_address]).to eq("Denver, CO, USA")
-      expect(geocoding_json[:results][0][:geometry][:location]).to eq({ lat: 39.7392358, lng: -104.990251 })
-    end
-  end
-
-  it "can retrieve geocoding for Brussels" do
-    VCR.use_cassette("brussels geocoding") do
-      location = "brussels,be"
-
-      geocoding_json = GoogleMapsServices.new.get_geocoding(location)
-
-      expect(geocoding_json[:status]).to eq("OK")
-      expect(geocoding_json[:results][0][:formatted_address]).to eq("Brussels, Belgium")
-      expect(geocoding_json[:results][0][:geometry][:location]).to eq({ lat: 50.8503396, lng: 4.3517103 })
+      expect(geocoding_json[:results][0]).to have_key(:formatted_address)
+      expect(geocoding_json[:results][0][:geometry][:location]).to have_key(:lat)
+      expect(geocoding_json[:results][0][:geometry][:location]).to have_key(:lng)
     end
   end
 end
