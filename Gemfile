@@ -9,14 +9,21 @@ gem 'rails', '~> 5.1.7'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.7'
 gem "fast_jsonapi", "~> 1.5"
+gem "faraday", "~> 1.0"
 
 group :test do
   gem "rspec-rails", "~> 4.0"
   gem "simplecov", "~> 0.18.5"
+  gem "webmock", "~> 3.8"
+  gem "vcr", "~> 6.0"
+  gem "shoulda-matchers", "~> 4.3"
+  gem "factory_bot_rails", "~> 5.2"
+  gem "faker", "~> 2.12"
 end
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem "figaro", "~> 1.2"
 end
 
 group :development do
@@ -26,5 +33,3 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem "figaro", "~> 1.2"
