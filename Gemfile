@@ -10,6 +10,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.7'
 gem "fast_jsonapi", "~> 1.5"
 gem "faraday", "~> 1.0"
+gem "bcrypt", "~> 3.1"
 
 group :test do
   gem "rspec-rails", "~> 4.0"
@@ -24,6 +25,7 @@ end
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "figaro", "~> 1.2"
+  gem "pry", "~> 0.13.1"
 end
 
 group :development do
@@ -33,3 +35,5 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+
