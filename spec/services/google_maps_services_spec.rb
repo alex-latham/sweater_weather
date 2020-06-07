@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe GoogleMapsServices do
-  it "can retrieve geocoding for an American city" do
+  it "can retrieve geocoding for Denver" do
     VCR.use_cassette("denver geocoding") do
       location = "denver,co"
+
       denver_geocoding = GoogleMapsServices.new.get_geocoding(location)
 
       expect(denver_geocoding[:status]).to eq("OK")
@@ -12,9 +13,10 @@ RSpec.describe GoogleMapsServices do
     end
   end
 
-  it "can retrieve geocoding for a Belgian city" do
+  it "can retrieve geocoding for Brussels" do
     VCR.use_cassette("brussels geocoding") do
       location = "brussels,be"
+      
       brussels_geocoding = GoogleMapsServices.new.get_geocoding(location)
 
       expect(brussels_geocoding[:status]).to eq("OK")
