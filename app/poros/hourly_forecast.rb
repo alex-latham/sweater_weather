@@ -9,7 +9,8 @@ class HourlyForecast
 
   def prepare_hash(hourly_forecast_json)
     hourly_forecast_json.map do |hour|
-      hour[:icon] = hour[:weather][0][:icon]
+      url = 'http://openweathermap.org/img/w/'
+      hour[:icon] = url + hour[:weather][0][:icon] + '.png'
       hour[:datetime] = hour[:dt]
       filter_hour(hour)
     end
