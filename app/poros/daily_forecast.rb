@@ -1,4 +1,12 @@
 class DailyForecast
+  attr_reader :hash
+
+  def initialize(daily_forecast_json)
+    @hash = prepare_hash(daily_forecast_json)
+  end
+
+  private
+
   def prepare_hash(daily_forecast_json)
     daily_forecast_json.map do |day|
       weather = day[:weather][0]
@@ -11,8 +19,6 @@ class DailyForecast
       filter_day(day)
     end
   end
-
-  private
 
   def filter_day(day_forecast_json)
     day_forecast_json.slice(

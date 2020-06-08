@@ -6,7 +6,7 @@ RSpec.describe HourlyForecast do
       VCR.use_cassette('portland hourly forecast poro') do
         geocoding = Geocoding.from_location_name('portland,or')
         forecast_json = OpenWeatherServices.new.get_forecast(geocoding)
-        hourly_forecast = HourlyForecast.prepare_hash(forecast_json[:hourly])
+        hourly_forecast = HourlyForecast.new(forecast_json[:hourly]).hash
 
         expect(hourly_forecast.length).to eq(48)
         hourly_forecast.each do |hour|

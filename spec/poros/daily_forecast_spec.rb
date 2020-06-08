@@ -6,7 +6,7 @@ RSpec.describe DailyForecast do
       VCR.use_cassette('portland daily forecast poro') do
         geocoding = Geocoding.from_location_name('portland,or')
         forecast_json = OpenWeatherServices.new.get_forecast(geocoding)
-        daily_forecast = DailyForecast.prepare_hash(forecast_json[:daily])
+        daily_forecast = DailyForecast.new(forecast_json[:daily]).hash
 
         expect(daily_forecast.length).to eq(8)
         daily_forecast.each do |day|
