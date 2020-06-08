@@ -1,9 +1,9 @@
 class OpenWeatherServices < BaseServices
-  def get_weather(latitude, longitude)
+  def get_forecast(geocoding)
     params = {
       appid: ENV['OPEN_WEATHER_API_KEY'],
-      lat: latitude,
-      lon: longitude,
+      lat: geocoding.latitude,
+      lon: geocoding.longitude,
       exclude: 'minutely'
     }
     path = '/data/2.5/onecall'
