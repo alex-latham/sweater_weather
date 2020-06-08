@@ -21,7 +21,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Mon, 08 Jun 2020 08:11:46 GMT
+      - Mon, 08 Jun 2020 08:57:33 GMT
       Pragma:
       - no-cache
       Expires:
@@ -41,7 +41,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       Server-Timing:
-      - gfet4t7; dur=324
+      - gfet4t7; dur=310
       Alt-Svc:
       - h3-27=":443"; ma=2592000,h3-25=":443"; ma=2592000,h3-T050=":443"; ma=2592000,h3-Q050=":443";
         ma=2592000,h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443";
@@ -110,7 +110,7 @@ http_interactions:
            ],
            "status" : "OK"
         }
-  recorded_at: Mon, 08 Jun 2020 08:11:46 GMT
+  recorded_at: Mon, 08 Jun 2020 08:57:33 GMT
 - request:
     method: get
     uri: https://api.openweathermap.org/data/2.5/onecall?appid=<OPEN_WEATHER_API_KEY>&exclude=minutely&lat=45.5051064&lon=-122.6750261&units=imperial
@@ -132,11 +132,11 @@ http_interactions:
       Server:
       - openresty
       Date:
-      - Mon, 08 Jun 2020 08:11:46 GMT
+      - Mon, 08 Jun 2020 08:57:33 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '14724'
+      - '14726'
       Connection:
       - keep-alive
       X-Cache-Key:
@@ -149,10 +149,10 @@ http_interactions:
       - GET, POST
     body:
       encoding: UTF-8
-      string: '{"lat":45.51,"lon":-122.68,"timezone":"America/Los_Angeles","timezone_offset":-25200,"current":{"dt":1591603906,"sunrise":1591618941,"sunset":1591675063,"temp":51.42,"feels_like":49.06,"pressure":1026,"humidity":87,"dew_point":47.7,"uvi":7.41,"clouds":45,"wind_speed":3.27,"wind_deg":270,"weather":[{"id":802,"main":"Clouds","description":"scattered
-        clouds","icon":"03n"}]},"hourly":[{"dt":1591603200,"temp":51.42,"feels_like":49.06,"pressure":1026,"humidity":87,"dew_point":47.7,"clouds":45,"wind_speed":3.27,"wind_deg":270,"weather":[{"id":802,"main":"Clouds","description":"scattered
-        clouds","icon":"03n"}]},{"dt":1591606800,"temp":51.98,"feels_like":48.78,"pressure":1024,"humidity":80,"dew_point":46,"clouds":49,"wind_speed":4.05,"wind_deg":241,"weather":[{"id":802,"main":"Clouds","description":"scattered
-        clouds","icon":"03n"}]},{"dt":1591610400,"temp":51.85,"feels_like":47.68,"pressure":1024,"humidity":76,"dew_point":44.55,"clouds":58,"wind_speed":5.17,"wind_deg":235,"weather":[{"id":803,"main":"Clouds","description":"broken
+      string: '{"lat":45.51,"lon":-122.68,"timezone":"America/Los_Angeles","timezone_offset":-25200,"current":{"dt":1591606653,"sunrise":1591618941,"sunset":1591675063,"temp":51.22,"feels_like":48.81,"pressure":1027,"humidity":87,"dew_point":47.5,"uvi":7.41,"clouds":45,"wind_speed":3.27,"wind_deg":270,"weather":[{"id":802,"main":"Clouds","description":"scattered
+        clouds","icon":"03n"}]},"hourly":[{"dt":1591603200,"temp":51.22,"feels_like":48.81,"pressure":1027,"humidity":87,"dew_point":47.5,"clouds":45,"wind_speed":3.27,"wind_deg":270,"weather":[{"id":802,"main":"Clouds","description":"scattered
+        clouds","icon":"03n"}]},{"dt":1591606800,"temp":51.89,"feels_like":48.65,"pressure":1025,"humidity":80,"dew_point":45.93,"clouds":49,"wind_speed":4.05,"wind_deg":241,"weather":[{"id":802,"main":"Clouds","description":"scattered
+        clouds","icon":"03n"}]},{"dt":1591610400,"temp":51.8,"feels_like":47.61,"pressure":1024,"humidity":76,"dew_point":44.49,"clouds":58,"wind_speed":5.17,"wind_deg":235,"weather":[{"id":803,"main":"Clouds","description":"broken
         clouds","icon":"04n"}]},{"dt":1591614000,"temp":51.87,"feels_like":46.8,"pressure":1023,"humidity":73,"dew_point":43.5,"clouds":67,"wind_speed":6.33,"wind_deg":237,"weather":[{"id":803,"main":"Clouds","description":"broken
         clouds","icon":"04n"}]},{"dt":1591617600,"temp":51.93,"feels_like":47.14,"pressure":1023,"humidity":72,"dew_point":43.2,"clouds":74,"wind_speed":5.73,"wind_deg":230,"weather":[{"id":803,"main":"Clouds","description":"broken
         clouds","icon":"04n"}]},{"dt":1591621200,"temp":51.78,"feels_like":47.19,"pressure":1023,"humidity":73,"dew_point":43.5,"clouds":100,"wind_speed":5.44,"wind_deg":228,"weather":[{"id":804,"main":"Clouds","description":"overcast
@@ -207,5 +207,5 @@ http_interactions:
         intensity rain","icon":"10d"}],"clouds":100,"rain":15.77,"uvi":7.69},{"dt":1592164800,"sunrise":1592137284,"sunset":1592193659,"temp":{"day":64.18,"min":53.33,"max":68.2,"night":57.67,"eve":64.18,"morn":53.33},"feels_like":{"day":61.45,"night":52.21,"eve":57.76,"morn":49.12},"pressure":1019,"humidity":49,"dew_point":45.01,"wind_speed":2.64,"wind_deg":218,"weather":[{"id":804,"main":"Clouds","description":"overcast
         clouds","icon":"04d"}],"clouds":100,"uvi":8.37},{"dt":1592251200,"sunrise":1592223683,"sunset":1592280084,"temp":{"day":70.16,"min":56.89,"max":71.74,"night":71.74,"eve":71.74,"morn":56.89},"feels_like":{"day":66.61,"night":66.43,"eve":66.43,"morn":53.53},"pressure":1020,"humidity":53,"dew_point":52.48,"wind_speed":7.56,"wind_deg":213,"weather":[{"id":500,"main":"Rain","description":"light
         rain","icon":"10d"}],"clouds":90,"rain":2.6,"uvi":8.22}]}'
-  recorded_at: Mon, 08 Jun 2020 08:11:46 GMT
+  recorded_at: Mon, 08 Jun 2020 08:57:33 GMT
 recorded_with: VCR 6.0.0
