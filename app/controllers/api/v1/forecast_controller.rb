@@ -3,7 +3,7 @@ module Api
     class ForecastController < ApplicationController
       def index
         geocoding = Geocoding.from_location_name(forecast_params[:location])
-        forecast = Forecast.from_geocoding(geocoding)
+        forecast = Forecast.at_geocoding(geocoding)
         render json: ForecastSerializer.new(forecast)
       end
 

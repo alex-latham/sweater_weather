@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Client', type: :request do
-  it 'can request forecast for a city' do
+  it 'can get a full forecast' do
     VCR.use_cassette('portland forecast request') do
       get api_v1_forecast_path(params: { location: 'portland,or' })
 

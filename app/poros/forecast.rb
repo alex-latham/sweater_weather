@@ -9,7 +9,7 @@ class Forecast
     @daily = DailyForecast.new(forecast_json[:daily]).hash
   end
 
-  def self.from_geocoding(geocoding)
+  def self.at_geocoding(geocoding)
     forecast_json = OpenWeatherServices.new.get_forecast(geocoding)
     new(geocoding.formatted_address, forecast_json)
   end
