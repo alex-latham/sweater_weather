@@ -6,25 +6,34 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.1.7'
-gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.7'
-gem "fast_jsonapi", "~> 1.5"
+gem 'pg'
+gem 'puma'
+gem "fast_jsonapi"
+gem "faraday"
+gem "bcrypt"
 
 group :test do
-  gem "rspec-rails", "~> 4.0"
-  gem "simplecov", "~> 0.18.5"
+  gem "rspec-rails"
+  gem "simplecov"
+  gem "webmock"
+  gem "vcr"
+  gem "shoulda-matchers"
+  gem "factory_bot_rails"
+  gem "faker"
 end
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem "figaro"
+  gem "rubocop-rails"
+  gem "pry"
 end
 
 group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "figaro", "~> 1.2"
