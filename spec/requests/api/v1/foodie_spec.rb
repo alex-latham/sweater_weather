@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Client', type: :request do
   it 'can request food and forecast for a city' do
-    get api_v1_fooodie_path(
+    get api_v1_foodie_path(
       params: {
         start: 'denver,co',
         end: 'pueblo,co',

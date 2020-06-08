@@ -3,6 +3,7 @@ module Api
     class FoodieController < ApplicationController
       def index
         foodie = Foodie.search(foodie_params)
+        binding.pry
         render json: FoodieSerializer.new(foodie)
       end
 
