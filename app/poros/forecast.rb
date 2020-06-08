@@ -33,6 +33,7 @@ class Forecast
 
   def filter_daily(daily_forecast_json)
     daily_forecast_json.map do |day|
+      day[:temp].slice!(:min, :max)
       day[:weather] = day[:weather][0]
       day.slice(:dt, :rain, :temp, :weather)
     end
