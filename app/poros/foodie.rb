@@ -14,11 +14,9 @@ class Foodie
     destination_geocoding = Geocoding.from_location_name(foodie_params[:end])
     forecast = Forecast.from_geocoding(destination_geocoding)
     restaurant = Restaurant.by_geocoding_and_cuisines(destination_geocoding, foodie_params[:search])
-    foodie_info = self.prepare_foodie_info(foodie_params[:end], directions, forecast, restaurant)
+    foodie_info = prepare_foodie_info(foodie_params[:end], directions, forecast, restaurant)
     new(foodie_info)
   end
-
-  private
 
   def self.prepare_foodie_info(end_location, directions, forecast, restaurant)
     { end_location: end_location,
