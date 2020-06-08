@@ -21,6 +21,11 @@ RSpec.describe OpenWeatherServices do
       expect(forecast_json[:hourly].length).to eq(48)
       expect(forecast_json[:hourly][0]).to have_key(:dt)
       expect(forecast_json[:hourly][0]).to have_key(:temp)
+      expect(forecast_json[:hourly][0][:weather][0]).to have_key(:id)
+      expect(forecast_json[:hourly][0][:weather][0]).to have_key(:main)
+      expect(forecast_json[:hourly][0][:weather][0]).to have_key(:description)
+      expect(forecast_json[:hourly][0][:weather][0]).to have_key(:icon)
+
 
       expect(forecast_json[:daily].length).to eq(8)
       expect(forecast_json[:daily][0]).to have_key(:dt)
@@ -54,6 +59,10 @@ RSpec.describe OpenWeatherServices do
       expect(forecast_json[:hourly].length).to eq(48)
       expect(forecast_json[:hourly][0]).to have_key(:dt)
       expect(forecast_json[:hourly][0]).to have_key(:temp)
+      expect(forecast_json[:hourly][0][:weather][0]).to have_key(:id)
+      expect(forecast_json[:hourly][0][:weather][0]).to have_key(:main)
+      expect(forecast_json[:hourly][0][:weather][0]).to have_key(:description)
+      expect(forecast_json[:hourly][0][:weather][0]).to have_key(:icon)
 
       expect(forecast_json[:daily].length).to eq(8)
       expect(forecast_json[:daily][0]).to have_key(:dt)

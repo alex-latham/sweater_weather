@@ -4,7 +4,6 @@ RSpec.describe GoogleMapsServices do
   it "can retrieve geocoding for Denver" do
     VCR.use_cassette("denver geocoding json") do
       location = "denver,co"
-
       geocoding_json = GoogleMapsServices.new.get_geocoding(location)
 
       expect(geocoding_json[:status]).to eq("OK")

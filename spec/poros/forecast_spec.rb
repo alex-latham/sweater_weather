@@ -24,6 +24,10 @@ RSpec.describe Forecast do
         expect(forecast.hourly.length).to eq(48)
         expect(forecast.hourly[0]).to have_key(:dt)
         expect(forecast.hourly[0]).to have_key(:temp)
+        expect(forecast.hourly[0][:weather][0]).to have_key(:id)
+        expect(forecast.hourly[0][:weather][0]).to have_key(:main)
+        expect(forecast.hourly[0][:weather][0]).to have_key(:description)
+        expect(forecast.hourly[0][:weather][0]).to have_key(:icon)
 
         expect(forecast.daily.length).to eq(8)
         expect(forecast.daily[0]).to have_key(:dt)
@@ -57,6 +61,10 @@ RSpec.describe Forecast do
         expect(forecast.hourly.length).to eq(48)
         expect(forecast.hourly[0]).to have_key(:dt)
         expect(forecast.hourly[0]).to have_key(:temp)
+        expect(forecast.hourly[0][:weather][0]).to have_key(:id)
+        expect(forecast.hourly[0][:weather][0]).to have_key(:main)
+        expect(forecast.hourly[0][:weather][0]).to have_key(:description)
+        expect(forecast.hourly[0][:weather][0]).to have_key(:icon)
 
         expect(forecast.daily.length).to eq(8)
         expect(forecast.daily[0]).to have_key(:dt)
