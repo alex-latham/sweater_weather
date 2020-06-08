@@ -2,14 +2,14 @@ module Api
   module V1
     class FoodieController < ApplicationController
       def index
-        foodie = Foodie.from_geocoding(geocoding)
+        foodie = Foodie.search(foodie_params)
         render json: FoodieSerializer.new(foodie)
       end
 
       private
 
-      def forecast_params
-        params.permit(:location)
+      def foodie_params
+        params.permit(:start, :end, :search)
       end
     end
   end

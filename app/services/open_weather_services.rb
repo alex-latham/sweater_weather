@@ -1,4 +1,4 @@
-class OpenWeatherServices < BaseServices
+class OpenWeatherServices
   def get_forecast(geocoding)
     params = {
       appid: ENV['OPEN_WEATHER_API_KEY'],
@@ -12,6 +12,11 @@ class OpenWeatherServices < BaseServices
   end
 
   private
+
+  def get_json(path, params)
+    response = conn.get(path, params)
+    JSON.parse(response.body, symbolize_names: true)
+  end
 
   def conn
     Faraday.new(url: 'https://api.openweathermap.org')
