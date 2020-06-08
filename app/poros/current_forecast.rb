@@ -27,7 +27,7 @@ class CurrentForecast
     uv_index = current_forecast_json[:uvi].round(0)
     current_forecast_json[:uvi] = uv_index.to_s << uv_exposure(uv_index)
     weather = current_forecast_json[:weather][0]
-    current_forecast_json[:description] = weather[:description]
+    current_forecast_json[:description] = weather[:description].titlecase
     current_forecast_json[:icon] = weather[:icon]
     current_forecast_json[:datetime] = current_forecast_json[:dt]
     current_forecast_json[:visibility] ||= nil

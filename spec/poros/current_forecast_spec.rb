@@ -16,8 +16,9 @@ RSpec.describe CurrentForecast do
         expect(current_forecast).to have_key(:humidity)
         expect(current_forecast).to have_key(:uvi)
         expect(current_forecast).to have_key(:visibility)
-        expect(current_forecast).to have_key(:description)
         expect(current_forecast).to have_key(:icon)
+        expect(current_forecast).to have_key(:description)
+        expect(current_forecast[:description].chars.first).to eq(current_forecast[:description].chars.first.upcase)
         expect(current_forecast.length).to eq(10)
       end
     end

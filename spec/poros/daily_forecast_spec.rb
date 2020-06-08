@@ -11,10 +11,11 @@ RSpec.describe DailyForecast do
         expect(daily_forecast.length).to eq(8)
         daily_forecast.each do |day|
           expect(day).to have_key(:datetime)
-          expect(day).to have_key(:icon)
-          expect(day).to have_key(:description)
           expect(day).to have_key(:max_temp)
           expect(day).to have_key(:min_temp)
+          expect(day).to have_key(:icon)
+          expect(day).to have_key(:description)
+          expect(day[:description].chars.first).to eq(day[:description].chars.first.upcase)
           expect(day.length).to eq(6)
         end
       end

@@ -11,7 +11,7 @@ class DailyForecast
     daily_forecast_json.map do |day|
       weather = day[:weather][0]
       day[:description] = weather[:main]
-      day[:icon] = weather[:icon]
+      day[:icon] = weather[:icon].titlecase
       day[:min_temp] = day[:temp][:min]
       day[:max_temp] = day[:temp][:max]
       day[:datetime] = day[:dt]
