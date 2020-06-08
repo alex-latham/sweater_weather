@@ -10,8 +10,10 @@ class Foodie
   end
 
   def self.search(foodie_params)
-    geocoding = Geocoding.from_location_name(foodie_params[:end])
-    restaurant_json = ZomatoServices.new.get_restaurant_json(geocoding, foodie_params[:search])
+    destination_geocoding = Geocoding.from_location_name(foodie_params[:end])
+    directions = Directions.with_origin_destination(foodie_params[:start], foodie_params[:end])
+    travel_time = directions_json
+    restaurant_json = ZomatoServices.new.get_restaurant_json(destination_geocoding, foodie_params[:search])
     restaurant_location = restaurant_json[:restaurants][0][:restaurant][:location]
     forecast = Forecast.from_geocoding(geocoding)
 

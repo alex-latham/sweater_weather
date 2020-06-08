@@ -5,6 +5,12 @@ class GoogleMapsServices
     get_json(path, params)
   end
 
+  def get_directions(origin, destination)
+    params = { key: ENV['GOOGLE_API_KEY'], origin: origin, destination: destination }
+    path = '/maps/api/directions/json'
+    get_json(path, params)
+  end
+
   private
 
   def get_json(path, params)
