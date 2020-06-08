@@ -8,8 +8,10 @@ RSpec.describe Foodie do
         end: 'pueblo,co',
         search: 'italian'
       }
+
       foodie = Foodie.search(foodie_params)
 
+      expect(foodie.id).to be_nil
       expect(foodie.end_location).to eq('pueblo,co')
       expect(foodie.travel_time).to be_a(String)
       expect(foodie.forecast).to have_key(:summary)
