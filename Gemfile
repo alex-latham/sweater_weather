@@ -25,6 +25,7 @@ end
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "figaro", "~> 1.2"
+  gem "rubocop-rails", "~> 2.5"
   gem "pry", "~> 0.13.1"
 end
 
@@ -35,8 +36,3 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-
-
-
-gem "rubocop-rails", "~> 2.5"

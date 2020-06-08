@@ -22,13 +22,52 @@ Style/Documentation:
   Enabled: false
 
 Style/ClassAndModuleChildren:
-  Enabled: false
+  Enabled: true
 
 Style/SafeNavigation:
-  Enabled: false
+  Enabled: true
 
 Metrics/AbcSize:
-  Enabled: false
+  Enabled: true
 
 Rails/UniqueValidationWithoutIndex:
-  Enabled: false
+  Enabled: true
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: true
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+
+Style/RedundantRegexpEscape:
+  Enabled: true
+
+Style/SlicingWithRange:
+  Enabled: true
