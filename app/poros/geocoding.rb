@@ -1,6 +1,6 @@
 class Geocoding
   attr_reader :formatted_address, :latitude, :longitude
-  
+
   def initialize(geocoding_json)
     @formatted_address = geocoding_json[:results][0][:formatted_address]
     @latitude = geocoding_json[:results][0][:geometry][:location][:lat]
