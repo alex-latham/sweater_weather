@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Client", type: :request do
-  it "can request forecast for a city (without rain/visibility)" do
-    VCR.use_cassette("denver forecast request") do
-      get api_v1_forecast_path(params: { location: "denver,co" })
+RSpec.describe 'Client', type: :request do
+  it 'can request forecast for a city (without rain/visibility)' do
+    VCR.use_cassette('denver forecast request') do
+      get api_v1_forecast_path(params: { location: 'denver,co' })
 
       expect(response).to be_successful
 
@@ -43,9 +43,9 @@ RSpec.describe "Client", type: :request do
     end
   end
 
-  it "can request forecast for a city (with rain/visibility)" do
-    VCR.use_cassette("seattle forecast request") do
-      get api_v1_forecast_path(params: { location: "seattle,wa" })
+  it 'can request forecast for a city (with rain/visibility)' do
+    VCR.use_cassette('seattle forecast request') do
+      get api_v1_forecast_path(params: { location: 'seattle,wa' })
 
       expect(response).to be_successful
 

@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Forecast do
-  describe "class methods" do
-    it "from_geocoding (without rain/visibility)" do
-      VCR.use_cassette("denver forecast poro") do
-        geocoding = Geocoding.from_location_name("denver,co")
+  describe 'class methods' do
+    it 'from_geocoding (without rain/visibility)' do
+      VCR.use_cassette('denver forecast poro') do
+        geocoding = Geocoding.from_location_name('denver,co')
         forecast  = Forecast.from_geocoding(geocoding)
 
         expect(forecast.id).to eq(0)
-        expect(forecast.location).to eq("Denver, CO, USA")
+        expect(forecast.location).to eq('Denver, CO, USA')
         expect(forecast.current).to have_key(:dt)
         expect(forecast.current).to have_key(:sunrise)
         expect(forecast.current).to have_key(:sunset)
@@ -40,9 +40,9 @@ RSpec.describe Forecast do
       end
     end
 
-    it "from_geocoding (with rain/visibility)" do
-      VCR.use_cassette("seattle forecast poro") do
-        geocoding = Geocoding.from_location_name("seattle,wa")
+    it 'from_geocoding (with rain/visibility)' do
+      VCR.use_cassette('seattle forecast poro') do
+        geocoding = Geocoding.from_location_name('seattle,wa')
         forecast = Forecast.from_geocoding(geocoding)
 
         expect(forecast.current).to have_key(:dt)

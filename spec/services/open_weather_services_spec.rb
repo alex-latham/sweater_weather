@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe OpenWeatherServices do
-  it "can retrieve weather for Denver (without rain/visibility)" do
-    VCR.use_cassette("denver forecast json") do
-      geocoding = Geocoding.from_location_name("denver,co")
+  it 'can retrieve weather for Denver (without rain/visibility)' do
+    VCR.use_cassette('denver forecast json') do
+      geocoding = Geocoding.from_location_name('denver,co')
       forecast_json = OpenWeatherServices.new.get_forecast(geocoding)
 
       expect(forecast_json[:current]).to have_key(:dt)
@@ -26,7 +26,6 @@ RSpec.describe OpenWeatherServices do
       expect(forecast_json[:hourly][0][:weather][0]).to have_key(:description)
       expect(forecast_json[:hourly][0][:weather][0]).to have_key(:icon)
 
-
       expect(forecast_json[:daily].length).to eq(8)
       expect(forecast_json[:daily][0]).to have_key(:dt)
       expect(forecast_json[:daily][0][:temp]).to have_key(:min)
@@ -38,9 +37,9 @@ RSpec.describe OpenWeatherServices do
     end
   end
 
-  it "can retrieve weather for Seattle (with rain/visibility)" do
-    VCR.use_cassette("seattle forecast json") do
-      geocoding = Geocoding.from_location_name("seattle,wa")
+  it 'can retrieve weather for Seattle (with rain/visibility)' do
+    VCR.use_cassette('seattle forecast json') do
+      geocoding = Geocoding.from_location_name('seattle,wa')
       forecast_json = OpenWeatherServices.new.get_forecast(geocoding)
 
       expect(forecast_json[:current]).to have_key(:dt)
