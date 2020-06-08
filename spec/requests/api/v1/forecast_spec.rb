@@ -8,6 +8,9 @@ RSpec.describe 'Client', type: :request do
       expect(response).to be_successful
       json = JSON.parse(response.body, symbolize_names: true)
 
+      expect(json[:data][:id]).to eq(nil)
+      expect(json[:data][:type]).to eq('forecast')
+
       expect(json[:data][:attributes].length).to eq(5)
       expect(json[:data][:attributes]).to have_key(:id)
       expect(json[:data][:attributes]).to have_key(:location)

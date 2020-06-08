@@ -7,7 +7,7 @@ RSpec.describe Forecast do
         geocoding = Geocoding.from_location_name('portland,or')
         forecast = Forecast.from_geocoding(geocoding)
 
-        expect(forecast.id).to eq(0)
+        expect(forecast.id).to eq(nil)
         expect(forecast.location).to eq('Portland, OR, USA')
 
         expect(forecast.current).to have_key(:datetime)

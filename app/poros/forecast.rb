@@ -2,7 +2,7 @@ class Forecast
   attr_reader :id, :location, :current, :hourly, :daily
 
   def initialize(location, forecast_json)
-    @id = 0
+    @id = nil
     @location = location
     @current = CurrentForecast.new(forecast_json[:current]).hash
     @hourly = HourlyForecast.new(forecast_json[:hourly]).hash
