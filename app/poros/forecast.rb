@@ -17,6 +17,7 @@ class Forecast
   private
 
   def filter_current(current_forecast_json)
+    current_forecast_json[:weather] = current_forecast_json[:weather][0]
     current_forecast_json.slice(
       :dt, :sunrise, :sunset, :temp, :feels_like,
       :humidity, :uvi, :visibility, :weather
@@ -25,12 +26,14 @@ class Forecast
 
   def filter_hourly(hourly_forecast_json)
     hourly_forecast_json.map do |hour|
+      hour[:weather] = hour[:weather][0]
       hour.slice(:dt, :temp, :weather)
     end
   end
 
   def filter_daily(daily_forecast_json)
     daily_forecast_json.map do |day|
+      day[:weather] = day[:weather][0]
       day.slice(:dt, :rain, :temp, :weather)
     end
   end
