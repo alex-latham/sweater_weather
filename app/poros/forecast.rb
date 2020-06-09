@@ -87,7 +87,7 @@ class Forecast
     elsif uv_index >= 1
       'low'
     else
-      uv_index.to_s
+      nil
     end
   end
 
