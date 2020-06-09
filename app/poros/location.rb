@@ -29,6 +29,8 @@ class Location
     address_component = address_components.detect do |component|
       component[:types].include?(type)
     end
+    return if address_component.nil?
+    
     type == 'country' ? address_component[:long_name]: address_component[:short_name]
   end
 end
