@@ -1,4 +1,6 @@
 class RoadTrip < ApplicationRecord
+  belongs_to :user
+  
   attr_reader :id, :start_location, :end_location, :travel_time, :forecast
 
   def initialize(road_trip_info)
