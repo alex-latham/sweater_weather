@@ -7,7 +7,9 @@ RSpec.describe Location do
         location = Location.from_name('denver,co')
 
         expect(location).to be_a(Location)
-        expect(location.name).to eq('Denver, CO, USA')
+        expect(location.city).to eq('Denver')
+        expect(location.region).to eq('CO')
+        expect(location.country).to eq('United States')
         expect(location.latitude).to eq(39.7392358)
         expect(location.longitude).to eq(-104.990251)
       end

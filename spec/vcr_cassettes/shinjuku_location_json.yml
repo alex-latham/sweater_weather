@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://maps.googleapis.com/maps/api/geocode/json?address=tokyo,jp&key=<GOOGLE_API_KEY>
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=shinjuku,jp&key=<GOOGLE_API_KEY>
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Tue, 09 Jun 2020 21:09:36 GMT
+      - Tue, 09 Jun 2020 21:32:42 GMT
       Pragma:
       - no-cache
       Expires:
@@ -41,7 +41,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       Server-Timing:
-      - gfet4t7; dur=556
+      - gfet4t7; dur=35
       Alt-Svc:
       - h3-27=":443"; ma=2592000,h3-25=":443"; ma=2592000,h3-T050=":443"; ma=2592000,h3-Q050=":443";
         ma=2592000,h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443";
@@ -56,6 +56,11 @@ http_interactions:
               {
                  "address_components" : [
                     {
+                       "long_name" : "Shinjuku City",
+                       "short_name" : "Shinjuku City",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
                        "long_name" : "Tokyo",
                        "short_name" : "Tokyo",
                        "types" : [ "administrative_area_level_1", "political" ]
@@ -66,39 +71,39 @@ http_interactions:
                        "types" : [ "country", "political" ]
                     }
                  ],
-                 "formatted_address" : "Tokyo, Japan",
+                 "formatted_address" : "Shinjuku City, Tokyo, Japan",
                  "geometry" : {
                     "bounds" : {
                        "northeast" : {
-                          "lat" : 35.8984285,
-                          "lng" : 153.9867945
+                          "lat" : 35.72976999999999,
+                          "lng" : 139.745134
                        },
                        "southwest" : {
-                          "lat" : 20.4251032,
-                          "lng" : 136.0696826
+                          "lat" : 35.6732961,
+                          "lng" : 139.6732668
                        }
                     },
                     "location" : {
-                       "lat" : 35.6761919,
-                       "lng" : 139.6503106
+                       "lat" : 35.6938253,
+                       "lng" : 139.7033559
                     },
                     "location_type" : "APPROXIMATE",
                     "viewport" : {
                        "northeast" : {
-                          "lat" : 36.4408483,
-                          "lng" : 141.2405144
+                          "lat" : 35.72976999999999,
+                          "lng" : 139.745134
                        },
                        "southwest" : {
-                          "lat" : 34.5776326,
-                          "lng" : 138.2991098
+                          "lat" : 35.6732961,
+                          "lng" : 139.6732668
                        }
                     }
                  },
-                 "place_id" : "ChIJ51cu8IcbXWARiRtXIothAS4",
-                 "types" : [ "administrative_area_level_1", "political" ]
+                 "place_id" : "ChIJS_23WSCNGGAR0u8y4o_GYew",
+                 "types" : [ "locality", "political" ]
               }
            ],
            "status" : "OK"
         }
-  recorded_at: Tue, 09 Jun 2020 21:09:36 GMT
+  recorded_at: Tue, 09 Jun 2020 21:32:42 GMT
 recorded_with: VCR 6.0.0
