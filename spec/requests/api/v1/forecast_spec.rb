@@ -10,58 +10,52 @@ RSpec.describe 'Client', type: :request do
       json = JSON.parse(response.body, symbolize_names: true)
 
       expect(json[:data]).to have_key(:id)
-      expect(json[:data]).to have_key(:type)
-      expect(json[:data]).to have_key(:attributes)
       expect(json[:data][:id]).to be_nil
       expect(json[:data][:type]).to eq('forecast')
+      expect(json[:data]).to have_key(:attributes)
       expect(json[:data].length).to eq(3)
 
       attributes = json[:data][:attributes]
 
-      expect(attributes).to have_key(:location)
+      expect(attributes[:location]).to eq('Portland, OR, USA')
       expect(attributes).to have_key(:current)
       expect(attributes).to have_key(:hourly)
       expect(attributes).to have_key(:daily)
-      expect(attributes[:location]).to eq('Portland, OR, USA')
       expect(attributes.length).to eq(4)
 
-      current = attributes[:current]
+      expect(attributes[:current][:datetime]).to eq(1591659238)
+      expect(attributes[:current][:sunrise]).to eq(1591618941)
+      expect(attributes[:current][:sunset]).to eq(1591675063)
+      expect(attributes[:current][:temperature]).to eq(63.1)
+      expect(attributes[:current][:feels_like]).to eq(59.22)
+      expect(attributes[:current][:humidity]).to eq(51)
+      expect(attributes[:current][:uv_index]).to eq(7.41)
+      expect(attributes[:current][:uv_rating]).to eq('high')
+      expect(attributes[:current][:visibility]).to eq(16093)
+      expect(attributes[:current][:description]).to eq('Overcast Clouds')
+      expect(attributes[:current][:icon_url]).to eq('http://openweathermap.org/img/w/04d.png')
+      expect(attributes[:current].length).to eq(11)
 
-      expect(current).to have_key(:datetime)
-      expect(current).to have_key(:sunrise)
-      expect(current).to have_key(:sunset)
-      expect(current).to have_key(:temperature)
-      expect(current).to have_key(:feels_like)
-      expect(current).to have_key(:humidity)
-      expect(current).to have_key(:uv_index)
-      expect(current).to have_key(:uv_rating)
-      expect(current).to have_key(:visibility)
-      expect(current).to have_key(:description)
-      expect(current).to have_key(:icon_url)
-      expect(current.length).to eq(11)
-
-      hourly = attributes[:hourly]
-
-      hourly.each do |hour|
-        expect(hour).to have_key(:datetime)
-        expect(hour).to have_key(:icon_url)
-        expect(hour).to have_key(:temperature)
+      attributes[:hourly].each do |hour|
+        expect(hour[:datetime]).to be_between(1591657200, 1591826400)
+        expect(hour[:icon_url]).to include('http://openweathermap.org/img/w/')
+        expect(hour[:icon_url]).to include('.png')
+        expect(hour[:temperature]).to be_between(52, 76.69)
         expect(hour.length).to eq(3)
       end
-      expect(hourly.length).to eq(48)
+      expect(attributes[:hourly].length).to eq(48)
 
-      daily = attributes[:daily]
-
-      daily.each do |day|
-        expect(day).to have_key(:datetime)
-        expect(day).to have_key(:icon_url)
-        expect(day).to have_key(:summary)
-        expect(day).to have_key(:rain)
-        expect(day).to have_key(:max_temperature)
-        expect(day).to have_key(:min_temperature)
+      attributes[:daily].each do |day|
+        expect(day[:datetime]).to be_between(1591646400, 1592251200)
+        expect(day[:icon_url]).to include('http://openweathermap.org/img/w/')
+        expect(day[:icon_url]).to include('.png')
+        expect(day[:summary]).to eq(day[:summary].titleize)
+        expect(day[:rain]).to be_between(0.27, 19.48)
+        expect(day[:max_temperature]).to be_between(57.96, 76.66)
+        expect(day[:min_temperature]).to be_between(50.85, 59.09)
         expect(day.length).to eq(6)
       end
-      expect(daily.length).to eq(8)
+      expect(attributes[:daily].length).to eq(8)
     end
   end
 end
