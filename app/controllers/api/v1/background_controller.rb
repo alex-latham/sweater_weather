@@ -2,8 +2,7 @@ module Api
   module V1
     class BackgroundController < ApplicationController
       def index
-        location = Location.from_name(background_params[:location])
-        background = Background.from_location(location)
+        background = Background.search(background_params[:location])
         render json: BackgroundSerializer.new(background)
       end
 
