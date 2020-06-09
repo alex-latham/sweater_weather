@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :user do
     email { Faker::Internet.email }
-    password_hash { SecureRandom.hex(31) }
-    api_key { SecureRandom.hex(16) }
+    password { SecureRandom.hex(24) }
+    api_key { SecureRandom.hex(24) }
   end
 end
