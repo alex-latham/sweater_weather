@@ -1,21 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe 'Client' do
-  it 'can post a new user' do
-    user = build(:user)
+  it 'can post a login' do
+    user = create(:user)
 
-    expect(User.count).to eq(0)
+    expect(User.count).to eq(1)
 
-    post api_v1_users_path(
+    post api_v1_sessions_path(
       params: {
         email: user.email,
-        password: user.password,
-        password_confirmation: user.password
+        password: user.password
       }
     )
 
     expect(response).to be_successful
-    
+
     json = JSON.parse(response.body, symbolize_names: true)
 
     expect(json[:data]).to have_key(:id)
