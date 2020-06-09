@@ -43,5 +43,22 @@ RSpec.describe Forecast do
         end
       end
     end
+
+    it 'uv_rating' do
+      expect(Forecast.uv_rating(0)).to be_nil
+      expect(Forecast.uv_rating(1)).to eq('low')
+      expect(Forecast.uv_rating(2)).to eq('low')
+      expect(Forecast.uv_rating(3)).to eq('moderate')
+      expect(Forecast.uv_rating(4)).to eq('moderate')
+      expect(Forecast.uv_rating(5)).to eq('moderate')
+      expect(Forecast.uv_rating(5.5)).to eq('moderate')
+      expect(Forecast.uv_rating(6)).to eq('high')
+      expect(Forecast.uv_rating(7)).to eq('high')
+      expect(Forecast.uv_rating(8)).to eq('very high')
+      expect(Forecast.uv_rating(9)).to eq('very high')
+      expect(Forecast.uv_rating(10)).to eq('very high')
+      expect(Forecast.uv_rating(11)).to eq('extreme')
+      expect(Forecast.uv_rating(12)).to eq('extreme')
+    end
   end
 end
