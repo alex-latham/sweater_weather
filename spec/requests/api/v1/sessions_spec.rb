@@ -13,14 +13,13 @@ RSpec.describe 'Client' do
       }
     )
 
-    expect(response).to be_successful
-
     json = JSON.parse(response.body, symbolize_names: true)
 
-    expect(json[:data]).to have_key(:id)
-    expect(json[:data][:type]).to eq('user')
-    expect(json[:data][:attributes][:email]).to eq(user.email)
-    expect(json[:data][:attributes][:api_key].chars.length).to eq(48)
     expect(User.count).to eq(1)
+    expect(response).to have_http_status(200)
+    expect(json[:data][:id]).to eq(user.id.to_s)
+    expect(json[:data][:type]).to eq('users')
+    expect(json[:data][:attributes][:email]).to eq(user.email)
+    expect(json[:data][:attributes][:api_key]).to eq(user.api_key)
   end
 end
