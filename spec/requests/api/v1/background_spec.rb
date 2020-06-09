@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Client' do
-  it 'can get get an image for a location' do
+  it 'can get get an image url for a location' do
     VCR.use_cassette('denver background request') do
       get api_v1_background_path(params: { location: 'denver,co' })
 

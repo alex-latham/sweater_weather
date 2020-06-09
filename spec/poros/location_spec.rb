@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Location do
   describe 'class methods' do
-    it 'from_name(denver,co)' do
+    it 'search(denver,co)' do
       VCR.use_cassette('denver location poro') do
-        location = Location.from_name('denver,co')
+        location = Location.search('denver,co')
 
         expect(location).to be_a(Location)
         expect(location.city).to eq('Denver')
@@ -15,9 +15,9 @@ RSpec.describe Location do
       end
     end
 
-    it 'from_name(shinjuku,jp)' do
+    it 'search(shinjuku,jp)' do
       VCR.use_cassette('shinjuku location poro') do
-        location = Location.from_name('shinjuku,jp')
+        location = Location.search('shinjuku,jp')
 
         expect(location).to be_a(Location)
         expect(location.city).to eq('Shinjuku City')
@@ -28,9 +28,9 @@ RSpec.describe Location do
       end
     end
 
-    it 'from_name(tokyo,jp) handles correctly with missing city' do
+    it 'search(tokyo,jp) handles correctly with missing city' do
       VCR.use_cassette('tokyo location poro') do
-        location = Location.from_name('tokyo,jp')
+        location = Location.search('tokyo,jp')
 
         expect(location).to be_a(Location)
         expect(location.city).to be_nil

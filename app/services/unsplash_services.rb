@@ -1,5 +1,5 @@
 class UnsplashServices < BaseServices
-  def background_from_query(query)
+  def get_background(query)
     path = '/search/photos'
     params = {
       client_id: ENV['UNSPLASH_CLIENT_ID'],

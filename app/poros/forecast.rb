@@ -19,7 +19,10 @@ class Forecast
     hourly = hourly(forecast_json[:hourly])
     daily = daily(forecast_json[:daily])
     forecast_info = {
-      location: location.name, current: current, hourly: hourly, daily: daily
+      location: [location.city, location.region, location.country].join(', '),
+      current: current,
+      hourly: hourly,
+      daily: daily
     }
     new(forecast_info)
   end

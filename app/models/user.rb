@@ -6,7 +6,6 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true
   validates :api_key, presence: true
   validates :api_key, uniqueness: true
-  validates :api_key, length: { is: 48 }
   
   has_secure_password
 end

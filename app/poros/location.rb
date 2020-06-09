@@ -9,7 +9,7 @@ class Location
     @longitude = location_info[:longitude]
   end
 
-  def self.from_name(location_name)
+  def self.search(location_name)
     location_json = GoogleMapsServices.new.get_location(location_name)
     location_info = prepare_location_info(location_json)
     new(location_info)

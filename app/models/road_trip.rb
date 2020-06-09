@@ -12,7 +12,7 @@ class RoadTrip < ApplicationRecord
 
   def self.plan(road_trip_params)
     User.find_by(api_key: road_trip_params[:api_key])
-    directions = Directions.with_origin_destination(road_trip_params[:start], road_trip_params[:end])
+    directions = Directions.search(road_trip_params[:start], road_trip_params[:end])
     destination_geocoding = Geocoding.from_location_name(road_trip_params[:end])
     forecast = Forecast.from_geocoding(destination_geocoding)
     road_trip_info = prepare_road_trip_info(foodie_params[:end], directions, forecast)

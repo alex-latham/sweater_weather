@@ -17,7 +17,7 @@ RSpec.describe 'Client', type: :request do
 
       attributes = json[:data][:attributes]
 
-      expect(attributes[:location]).to eq('Portland, OR, USA')
+      expect(attributes[:location]).to eq('Portland, OR, United States')
       expect(attributes).to have_key(:current)
       expect(attributes).to have_key(:hourly)
       expect(attributes).to have_key(:daily)
@@ -49,7 +49,7 @@ RSpec.describe 'Client', type: :request do
         expect(day[:datetime]).to be_between(1591646400, 1592251200)
         expect(day[:icon_url]).to include('http://openweathermap.org/img/w/')
         expect(day[:icon_url]).to include('.png')
-        expect(day[:summary]).to eq(day[:summary].titleize)
+        expect(day[:summary]).to eq(day[:summary].titlecase)
         expect(day[:rain]).to be_between(0.27, 19.48)
         expect(day[:max_temperature]).to be_between(57.96, 76.66)
         expect(day[:min_temperature]).to be_between(50.85, 59.09)
