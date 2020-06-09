@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe GoogleMapsServices do
   it 'can retrieve location json for denver' do
-    VCR.use_cassette('denver location json') do
+    VCR.use_cassette('location denver') do
       location_json = GoogleMapsServices.new.get_location('denver,co')
 
       expect(location_json[:status]).to eq('OK')
@@ -19,7 +19,7 @@ RSpec.describe GoogleMapsServices do
   end
 
   it 'can retrieve location json for paris' do
-    VCR.use_cassette('paris location json') do
+    VCR.use_cassette('location paris') do
       location_json = GoogleMapsServices.new.get_location('paris,fr')
 
       expect(location_json[:status]).to eq('OK')
@@ -36,7 +36,7 @@ RSpec.describe GoogleMapsServices do
   end
 
   it 'can retrieve location json for shinjuku' do
-    VCR.use_cassette('shinjuku location json') do
+    VCR.use_cassette('location shinjuku') do
       location_json = GoogleMapsServices.new.get_location('shinjuku,jp')
 
       expect(location_json[:status]).to eq('OK')
@@ -53,7 +53,7 @@ RSpec.describe GoogleMapsServices do
   end
 
   it 'can retrieve location json for cairns' do
-    VCR.use_cassette('cairns location json') do
+    VCR.use_cassette('location cairns') do
       location_json = GoogleMapsServices.new.get_location('cairns,au')
 
       expect(location_json[:status]).to eq('OK')
@@ -70,7 +70,7 @@ RSpec.describe GoogleMapsServices do
   end
 
   it 'can retrieve location json for washington d.c.' do
-    VCR.use_cassette('washington d.c. location json') do
+    VCR.use_cassette('location washington dc') do
       location_json = GoogleMapsServices.new.get_location('dc,dc')
 
       expect(location_json[:status]).to eq('OK')

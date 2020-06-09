@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://maps.googleapis.com/maps/api/geocode/json?address=tokyo,jp&key=<GOOGLE_API_KEY>
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=denver,co&key=<GOOGLE_API_KEY>
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Tue, 09 Jun 2020 22:04:46 GMT
+      - Tue, 09 Jun 2020 23:37:45 GMT
       Pragma:
       - no-cache
       Expires:
@@ -33,7 +33,7 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Goog-Maps-Metro-Area:
-      - Tokyo
+      - Denver, CO
       Server:
       - mafe
       X-Xss-Protection:
@@ -41,7 +41,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       Server-Timing:
-      - gfet4t7; dur=723
+      - gfet4t7; dur=261
       Alt-Svc:
       - h3-27=":443"; ma=2592000,h3-25=":443"; ma=2592000,h3-T050=":443"; ma=2592000,h3-Q050=":443";
         ma=2592000,h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443";
@@ -56,49 +56,59 @@ http_interactions:
               {
                  "address_components" : [
                     {
-                       "long_name" : "Tokyo",
-                       "short_name" : "Tokyo",
+                       "long_name" : "Denver",
+                       "short_name" : "Denver",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Denver County",
+                       "short_name" : "Denver County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "Colorado",
+                       "short_name" : "CO",
                        "types" : [ "administrative_area_level_1", "political" ]
                     },
                     {
-                       "long_name" : "Japan",
-                       "short_name" : "JP",
+                       "long_name" : "United States",
+                       "short_name" : "US",
                        "types" : [ "country", "political" ]
                     }
                  ],
-                 "formatted_address" : "Tokyo, Japan",
+                 "formatted_address" : "Denver, CO, USA",
                  "geometry" : {
                     "bounds" : {
                        "northeast" : {
-                          "lat" : 35.8984285,
-                          "lng" : 153.9867945
+                          "lat" : 39.91424689999999,
+                          "lng" : -104.6002959
                        },
                        "southwest" : {
-                          "lat" : 20.4251032,
-                          "lng" : 136.0696826
+                          "lat" : 39.614431,
+                          "lng" : -105.109927
                        }
                     },
                     "location" : {
-                       "lat" : 35.6761919,
-                       "lng" : 139.6503106
+                       "lat" : 39.7392358,
+                       "lng" : -104.990251
                     },
                     "location_type" : "APPROXIMATE",
                     "viewport" : {
                        "northeast" : {
-                          "lat" : 36.4408483,
-                          "lng" : 141.2405144
+                          "lat" : 39.91424689999999,
+                          "lng" : -104.6002959
                        },
                        "southwest" : {
-                          "lat" : 34.5776326,
-                          "lng" : 138.2991098
+                          "lat" : 39.614431,
+                          "lng" : -105.109927
                        }
                     }
                  },
-                 "place_id" : "ChIJ51cu8IcbXWARiRtXIothAS4",
-                 "types" : [ "administrative_area_level_1", "political" ]
+                 "place_id" : "ChIJzxcfI6qAa4cR1jaKJ_j0jhE",
+                 "types" : [ "locality", "political" ]
               }
            ],
            "status" : "OK"
         }
-  recorded_at: Tue, 09 Jun 2020 22:04:46 GMT
+  recorded_at: Tue, 09 Jun 2020 23:37:45 GMT
 recorded_with: VCR 6.0.0

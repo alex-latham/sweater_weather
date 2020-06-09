@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://maps.googleapis.com/maps/api/geocode/json?address=shinjuku,jp&key=<GOOGLE_API_KEY>
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=dc,dc&key=<GOOGLE_API_KEY>
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Tue, 09 Jun 2020 21:32:42 GMT
+      - Tue, 09 Jun 2020 23:37:44 GMT
       Pragma:
       - no-cache
       Expires:
@@ -33,7 +33,7 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Goog-Maps-Metro-Area:
-      - Tokyo
+      - Washington, DC
       Server:
       - mafe
       X-Xss-Protection:
@@ -41,7 +41,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       Server-Timing:
-      - gfet4t7; dur=35
+      - gfet4t7; dur=572
       Alt-Svc:
       - h3-27=":443"; ma=2592000,h3-25=":443"; ma=2592000,h3-T050=":443"; ma=2592000,h3-Q050=":443";
         ma=2592000,h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443";
@@ -56,54 +56,59 @@ http_interactions:
               {
                  "address_components" : [
                     {
-                       "long_name" : "Shinjuku City",
-                       "short_name" : "Shinjuku City",
+                       "long_name" : "Washington",
+                       "short_name" : "Washington",
                        "types" : [ "locality", "political" ]
                     },
                     {
-                       "long_name" : "Tokyo",
-                       "short_name" : "Tokyo",
+                       "long_name" : "District of Columbia",
+                       "short_name" : "District of Columbia",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "District of Columbia",
+                       "short_name" : "DC",
                        "types" : [ "administrative_area_level_1", "political" ]
                     },
                     {
-                       "long_name" : "Japan",
-                       "short_name" : "JP",
+                       "long_name" : "United States",
+                       "short_name" : "US",
                        "types" : [ "country", "political" ]
                     }
                  ],
-                 "formatted_address" : "Shinjuku City, Tokyo, Japan",
+                 "formatted_address" : "Washington, DC, USA",
                  "geometry" : {
                     "bounds" : {
                        "northeast" : {
-                          "lat" : 35.72976999999999,
-                          "lng" : 139.745134
+                          "lat" : 38.995548,
+                          "lng" : -76.90939299999999
                        },
                        "southwest" : {
-                          "lat" : 35.6732961,
-                          "lng" : 139.6732668
+                          "lat" : 38.7916449,
+                          "lng" : -77.119759
                        }
                     },
                     "location" : {
-                       "lat" : 35.6938253,
-                       "lng" : 139.7033559
+                       "lat" : 38.9071923,
+                       "lng" : -77.03687069999999
                     },
                     "location_type" : "APPROXIMATE",
                     "viewport" : {
                        "northeast" : {
-                          "lat" : 35.72976999999999,
-                          "lng" : 139.745134
+                          "lat" : 38.995548,
+                          "lng" : -76.90939299999999
                        },
                        "southwest" : {
-                          "lat" : 35.6732961,
-                          "lng" : 139.6732668
+                          "lat" : 38.7916449,
+                          "lng" : -77.119759
                        }
                     }
                  },
-                 "place_id" : "ChIJS_23WSCNGGAR0u8y4o_GYew",
+                 "place_id" : "ChIJW-T2Wt7Gt4kRKl2I1CJFUsI",
                  "types" : [ "locality", "political" ]
               }
            ],
            "status" : "OK"
         }
-  recorded_at: Tue, 09 Jun 2020 21:32:42 GMT
+  recorded_at: Tue, 09 Jun 2020 23:37:44 GMT
 recorded_with: VCR 6.0.0

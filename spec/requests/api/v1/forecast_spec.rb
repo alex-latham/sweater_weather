@@ -38,6 +38,7 @@ RSpec.describe 'Client', type: :request do
       expect(attributes[:current][:icon_url]).to eq('http://openweathermap.org/img/w/04d.png')
       expect(attributes[:current].length).to eq(11)
 
+      expect(attributes[:hourly].length).to eq(48)
       attributes[:hourly].each do |hour|
         expect(hour[:datetime]).to be_between(1591657200, 1591826400)
         expect(hour[:icon_url]).to include('http://openweathermap.org/img/w/')
@@ -45,8 +46,8 @@ RSpec.describe 'Client', type: :request do
         expect(hour[:temperature]).to be_between(52, 76.69)
         expect(hour.length).to eq(3)
       end
-      expect(attributes[:hourly].length).to eq(48)
 
+      expect(attributes[:daily].length).to eq(8)
       attributes[:daily].each do |day|
         expect(day[:datetime]).to be_between(1591646400, 1592251200)
         expect(day[:icon_url]).to include('http://openweathermap.org/img/w/')
@@ -57,7 +58,6 @@ RSpec.describe 'Client', type: :request do
         expect(day[:min_temperature]).to be_between(50.85, 59.09)
         expect(day.length).to eq(6)
       end
-      expect(attributes[:daily].length).to eq(8)
     end
   end
 end

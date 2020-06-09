@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://maps.googleapis.com/maps/api/geocode/json?address=denver,co&key=<GOOGLE_API_KEY>
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=shinjuku,jp&key=<GOOGLE_API_KEY>
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Tue, 09 Jun 2020 21:19:24 GMT
+      - Tue, 09 Jun 2020 23:37:43 GMT
       Pragma:
       - no-cache
       Expires:
@@ -33,7 +33,7 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Goog-Maps-Metro-Area:
-      - Denver, CO
+      - Tokyo
       Server:
       - mafe
       X-Xss-Protection:
@@ -41,7 +41,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       Server-Timing:
-      - gfet4t7; dur=42
+      - gfet4t7; dur=381
       Alt-Svc:
       - h3-27=":443"; ma=2592000,h3-25=":443"; ma=2592000,h3-T050=":443"; ma=2592000,h3-Q050=":443";
         ma=2592000,h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443";
@@ -56,59 +56,54 @@ http_interactions:
               {
                  "address_components" : [
                     {
-                       "long_name" : "Denver",
-                       "short_name" : "Denver",
+                       "long_name" : "Shinjuku City",
+                       "short_name" : "Shinjuku City",
                        "types" : [ "locality", "political" ]
                     },
                     {
-                       "long_name" : "Denver County",
-                       "short_name" : "Denver County",
-                       "types" : [ "administrative_area_level_2", "political" ]
-                    },
-                    {
-                       "long_name" : "Colorado",
-                       "short_name" : "CO",
+                       "long_name" : "Tokyo",
+                       "short_name" : "Tokyo",
                        "types" : [ "administrative_area_level_1", "political" ]
                     },
                     {
-                       "long_name" : "United States",
-                       "short_name" : "US",
+                       "long_name" : "Japan",
+                       "short_name" : "JP",
                        "types" : [ "country", "political" ]
                     }
                  ],
-                 "formatted_address" : "Denver, CO, USA",
+                 "formatted_address" : "Shinjuku City, Tokyo, Japan",
                  "geometry" : {
                     "bounds" : {
                        "northeast" : {
-                          "lat" : 39.91424689999999,
-                          "lng" : -104.6002959
+                          "lat" : 35.72976999999999,
+                          "lng" : 139.745134
                        },
                        "southwest" : {
-                          "lat" : 39.614431,
-                          "lng" : -105.109927
+                          "lat" : 35.6732961,
+                          "lng" : 139.6732668
                        }
                     },
                     "location" : {
-                       "lat" : 39.7392358,
-                       "lng" : -104.990251
+                       "lat" : 35.6938253,
+                       "lng" : 139.7033559
                     },
                     "location_type" : "APPROXIMATE",
                     "viewport" : {
                        "northeast" : {
-                          "lat" : 39.91424689999999,
-                          "lng" : -104.6002959
+                          "lat" : 35.72976999999999,
+                          "lng" : 139.745134
                        },
                        "southwest" : {
-                          "lat" : 39.614431,
-                          "lng" : -105.109927
+                          "lat" : 35.6732961,
+                          "lng" : 139.6732668
                        }
                     }
                  },
-                 "place_id" : "ChIJzxcfI6qAa4cR1jaKJ_j0jhE",
+                 "place_id" : "ChIJS_23WSCNGGAR0u8y4o_GYew",
                  "types" : [ "locality", "political" ]
               }
            ],
            "status" : "OK"
         }
-  recorded_at: Tue, 09 Jun 2020 21:19:24 GMT
+  recorded_at: Tue, 09 Jun 2020 23:37:44 GMT
 recorded_with: VCR 6.0.0

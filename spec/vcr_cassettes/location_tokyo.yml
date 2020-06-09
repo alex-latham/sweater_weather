@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://maps.googleapis.com/maps/api/geocode/json?address=dc,dc&key=<GOOGLE_API_KEY>
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=tokyo,jp&key=<GOOGLE_API_KEY>
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Tue, 09 Jun 2020 21:19:25 GMT
+      - Tue, 09 Jun 2020 23:38:34 GMT
       Pragma:
       - no-cache
       Expires:
@@ -33,7 +33,7 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Goog-Maps-Metro-Area:
-      - Washington, DC
+      - Tokyo
       Server:
       - mafe
       X-Xss-Protection:
@@ -41,7 +41,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       Server-Timing:
-      - gfet4t7; dur=63
+      - gfet4t7; dur=377
       Alt-Svc:
       - h3-27=":443"; ma=2592000,h3-25=":443"; ma=2592000,h3-T050=":443"; ma=2592000,h3-Q050=":443";
         ma=2592000,h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443";
@@ -56,59 +56,49 @@ http_interactions:
               {
                  "address_components" : [
                     {
-                       "long_name" : "Washington",
-                       "short_name" : "Washington",
-                       "types" : [ "locality", "political" ]
-                    },
-                    {
-                       "long_name" : "District of Columbia",
-                       "short_name" : "District of Columbia",
-                       "types" : [ "administrative_area_level_2", "political" ]
-                    },
-                    {
-                       "long_name" : "District of Columbia",
-                       "short_name" : "DC",
+                       "long_name" : "Tokyo",
+                       "short_name" : "Tokyo",
                        "types" : [ "administrative_area_level_1", "political" ]
                     },
                     {
-                       "long_name" : "United States",
-                       "short_name" : "US",
+                       "long_name" : "Japan",
+                       "short_name" : "JP",
                        "types" : [ "country", "political" ]
                     }
                  ],
-                 "formatted_address" : "Washington, DC, USA",
+                 "formatted_address" : "Tokyo, Japan",
                  "geometry" : {
                     "bounds" : {
                        "northeast" : {
-                          "lat" : 38.995548,
-                          "lng" : -76.90939299999999
+                          "lat" : 35.8984285,
+                          "lng" : 153.9867945
                        },
                        "southwest" : {
-                          "lat" : 38.7916449,
-                          "lng" : -77.119759
+                          "lat" : 20.4251032,
+                          "lng" : 136.0696826
                        }
                     },
                     "location" : {
-                       "lat" : 38.9071923,
-                       "lng" : -77.03687069999999
+                       "lat" : 35.6761919,
+                       "lng" : 139.6503106
                     },
                     "location_type" : "APPROXIMATE",
                     "viewport" : {
                        "northeast" : {
-                          "lat" : 38.995548,
-                          "lng" : -76.90939299999999
+                          "lat" : 36.4408483,
+                          "lng" : 141.2405144
                        },
                        "southwest" : {
-                          "lat" : 38.7916449,
-                          "lng" : -77.119759
+                          "lat" : 34.5776326,
+                          "lng" : 138.2991098
                        }
                     }
                  },
-                 "place_id" : "ChIJW-T2Wt7Gt4kRKl2I1CJFUsI",
-                 "types" : [ "locality", "political" ]
+                 "place_id" : "ChIJ51cu8IcbXWARiRtXIothAS4",
+                 "types" : [ "administrative_area_level_1", "political" ]
               }
            ],
            "status" : "OK"
         }
-  recorded_at: Tue, 09 Jun 2020 21:19:25 GMT
+  recorded_at: Tue, 09 Jun 2020 23:38:34 GMT
 recorded_with: VCR 6.0.0
