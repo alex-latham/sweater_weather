@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=paris,fr&key=<GOOGLE_API_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Tue, 09 Jun 2020 21:06:59 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Goog-Maps-Metro-Area:
+      - Paris
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=515
+      Alt-Svc:
+      - h3-27=":443"; ma=2592000,h3-25=":443"; ma=2592000,h3-T050=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICAicmVzdWx0cyIgOiBbCiAgICAgIHsKICAgICAgICAgImFkZHJlc3NfY29tcG9uZW50cyIgOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgImxvbmdfbmFtZSIgOiAiUGFyaXMiLAogICAgICAgICAgICAgICAic2hvcnRfbmFtZSIgOiAiUGFyaXMiLAogICAgICAgICAgICAgICAidHlwZXMiIDogWyAibG9jYWxpdHkiLCAicG9saXRpY2FsIiBdCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgImxvbmdfbmFtZSIgOiAiUGFyaXMiLAogICAgICAgICAgICAgICAic2hvcnRfbmFtZSIgOiAiUGFyaXMiLAogICAgICAgICAgICAgICAidHlwZXMiIDogWyAiYWRtaW5pc3RyYXRpdmVfYXJlYV9sZXZlbF8yIiwgInBvbGl0aWNhbCIgXQogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICJsb25nX25hbWUiIDogIsOObGUtZGUtRnJhbmNlIiwKICAgICAgICAgICAgICAgInNob3J0X25hbWUiIDogIklERiIsCiAgICAgICAgICAgICAgICJ0eXBlcyIgOiBbICJhZG1pbmlzdHJhdGl2ZV9hcmVhX2xldmVsXzEiLCAicG9saXRpY2FsIiBdCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgImxvbmdfbmFtZSIgOiAiRnJhbmNlIiwKICAgICAgICAgICAgICAgInNob3J0X25hbWUiIDogIkZSIiwKICAgICAgICAgICAgICAgInR5cGVzIiA6IFsgImNvdW50cnkiLCAicG9saXRpY2FsIiBdCiAgICAgICAgICAgIH0KICAgICAgICAgXSwKICAgICAgICAgImZvcm1hdHRlZF9hZGRyZXNzIiA6ICJQYXJpcywgRnJhbmNlIiwKICAgICAgICAgImdlb21ldHJ5IiA6IHsKICAgICAgICAgICAgImJvdW5kcyIgOiB7CiAgICAgICAgICAgICAgICJub3J0aGVhc3QiIDogewogICAgICAgICAgICAgICAgICAibGF0IiA6IDQ4LjkwMjE0NDksCiAgICAgICAgICAgICAgICAgICJsbmciIDogMi40Njk5MjA4CiAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICJzb3V0aHdlc3QiIDogewogICAgICAgICAgICAgICAgICAibGF0IiA6IDQ4LjgxNTU3MywKICAgICAgICAgICAgICAgICAgImxuZyIgOiAyLjIyNDE5OQogICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0sCiAgICAgICAgICAgICJsb2NhdGlvbiIgOiB7CiAgICAgICAgICAgICAgICJsYXQiIDogNDguODU2NjE0LAogICAgICAgICAgICAgICAibG5nIiA6IDIuMzUyMjIxOQogICAgICAgICAgICB9LAogICAgICAgICAgICAibG9jYXRpb25fdHlwZSIgOiAiQVBQUk9YSU1BVEUiLAogICAgICAgICAgICAidmlld3BvcnQiIDogewogICAgICAgICAgICAgICAibm9ydGhlYXN0IiA6IHsKICAgICAgICAgICAgICAgICAgImxhdCIgOiA0OC45MDIxNDQ5LAogICAgICAgICAgICAgICAgICAibG5nIiA6IDIuNDY5OTIwOAogICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAic291dGh3ZXN0IiA6IHsKICAgICAgICAgICAgICAgICAgImxhdCIgOiA0OC44MTU1NzMsCiAgICAgICAgICAgICAgICAgICJsbmciIDogMi4yMjQxOTkKICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CiAgICAgICAgIH0sCiAgICAgICAgICJwbGFjZV9pZCIgOiAiQ2hJSkQ3ZmlCaDl1NWtjUllKU01hTU9DQ3dRIiwKICAgICAgICAgInR5cGVzIiA6IFsgImxvY2FsaXR5IiwgInBvbGl0aWNhbCIgXQogICAgICB9CiAgIF0sCiAgICJzdGF0dXMiIDogIk9LIgp9Cg==
+  recorded_at: Tue, 09 Jun 2020 21:06:59 GMT
+recorded_with: VCR 6.0.0
