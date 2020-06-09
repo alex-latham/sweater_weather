@@ -13,13 +13,18 @@ class Forecast
 
   end
 
-  def self.at_location(location)
+  def self.search(location)
+    location = Location.search(location)
     forecast_json = OpenWeatherServices.new.get_forecast(location)
     current = current(forecast_json[:current])
     hourly = hourly(forecast_json[:hourly])
     daily = daily(forecast_json[:daily])
     forecast_info = {
-      location: [location.city, location.region, location.country].join(', '),
+      location: {
+        city: location.city,
+        region: location.region,
+        country: location.country
+      },
       current: current,
       hourly: hourly,
       daily: daily

@@ -2,13 +2,15 @@ require 'rails_helper'
 
 RSpec.describe Forecast do
   describe 'class methods' do
-    it 'at_location' do
-      VCR.use_cassette('portland forecast poro') do
-        location = Location.search('portland,or')
-        forecast = Forecast.at_location(location)
+    it 'search' do
+      VCR.use_cassette('portland forecast') do
+        forecast = Forecast.search('portland,or')
 
+        expect(forecast).to be_a(Forecast)
         expect(forecast.id).to eq(nil)
-        expect(forecast.location).to eq('Portland, OR, United States')
+        expect(forecast.location[:city]).to eq('Portland')
+        expect(forecast.location[:region]).to eq('OR')
+        expect(forecast.location[:country]).to eq('United States')
 
         expect(forecast.current).to have_key(:datetime)
         expect(forecast.current).to have_key(:sunrise)

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Client', type: :request do
   it 'can get a full forecast' do
-    VCR.use_cassette('portland forecast request') do
+    VCR.use_cassette('forecast portland') do
       get api_v1_forecast_path(params: { location: 'portland,or' })
 
       expect(response).to be_successful
@@ -17,7 +17,9 @@ RSpec.describe 'Client', type: :request do
 
       attributes = json[:data][:attributes]
 
-      expect(attributes[:location]).to eq('Portland, OR, United States')
+      expect(attributes[:location][:city]).to eq('Portland')
+      expect(attributes[:location][:region]).to eq('OR')
+      expect(attributes[:location][:country]).to eq('United States')
       expect(attributes).to have_key(:current)
       expect(attributes).to have_key(:hourly)
       expect(attributes).to have_key(:daily)

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe OpenWeatherServices do
   it 'can retrieve weather json for a city' do
-    VCR.use_cassette('portland forecast json') do
+    VCR.use_cassette('portland forecast') do
       location = Location.search('portland,or')
       forecast_json = OpenWeatherServices.new.get_forecast(location)
 
