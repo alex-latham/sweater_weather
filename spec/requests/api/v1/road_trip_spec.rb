@@ -1,12 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'Client', type: :request do
-  it 'can post a road trip' do
-    get api_v1_foodie_path(
+  xit 'can post a road trip' do
+    get api_v1_road_trip_path(
       params: {
         start: 'denver,co',
         end: 'pueblo,co',
-        search: 'italian'
       }
     )
 

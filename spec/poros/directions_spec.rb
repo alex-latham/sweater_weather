@@ -9,7 +9,6 @@ RSpec.describe Directions do
       directions = Directions.with_origin_destination(origin, destination)
 
       expect(directions.travel_time).to be_a(String)
-      expect(directions.travel_time).to include('mins')
     end
   end
 end

@@ -1,6 +1,6 @@
 class GoogleMapsServices
-  def get_geocoding(address)
-    params = { key: ENV['GOOGLE_API_KEY'], address: address }
+  def get_location(location_name)
+    params = { key: ENV['GOOGLE_API_KEY'], address: location_name }
     path = '/maps/api/geocode/json'
     get_json(path, params)
   end

@@ -21,7 +21,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Mon, 08 Jun 2020 16:40:12 GMT
+      - Mon, 08 Jun 2020 23:43:27 GMT
       Pragma:
       - no-cache
       Expires:
@@ -41,7 +41,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       Server-Timing:
-      - gfet4t7; dur=44
+      - gfet4t7; dur=24
       Alt-Svc:
       - h3-27=":443"; ma=2592000,h3-25=":443"; ma=2592000,h3-T050=":443"; ma=2592000,h3-Q050=":443";
         ma=2592000,h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443";
@@ -110,5 +110,5 @@ http_interactions:
            ],
            "status" : "OK"
         }
-  recorded_at: Mon, 08 Jun 2020 16:40:12 GMT
+  recorded_at: Mon, 08 Jun 2020 23:43:27 GMT
 recorded_with: VCR 6.0.0

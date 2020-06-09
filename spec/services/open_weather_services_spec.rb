@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe OpenWeatherServices do
-  it 'can retrieve weather for a city' do
+  it 'can retrieve weather json for a city' do
     VCR.use_cassette('portland forecast json') do
-      geocoding = Geocoding.from_location_name('portland,or')
-      forecast_json = OpenWeatherServices.new.get_forecast(geocoding)
+      location = Location.from_name('portland,or')
+      forecast_json = OpenWeatherServices.new.get_forecast(location)
 
       expect(forecast_json[:current]).to have_key(:dt)
       expect(forecast_json[:current]).to have_key(:sunrise)
