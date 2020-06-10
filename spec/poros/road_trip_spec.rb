@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe RoadTrip do
   describe 'class methods' do
     it 'plan(road_trip_params)' do
-      # VCR.use_cassette('road trip denver pueblo') do
+      VCR.use_cassette('road trip denver pueblo') do
         user = create(:user)
 
         road_trip_params = {
@@ -21,11 +21,11 @@ RSpec.describe RoadTrip do
         expect(road_trip.destination[:city]).to eq('Pueblo')
         expect(road_trip.destination[:region]).to eq('CO')
         expect(road_trip.destination[:country]).to eq('United States')
-        expect(road_trip.travel_time[:text]).to eq('x')
-        expect(road_trip.travel_time[:value]).to eq(35243)
-        expect(road_trip.forecast[:temperature]).to eq(54)
-        expect(road_trip.forecast[:description]).to eq('Mostly Sunny')
-      # end
+        expect(road_trip.travel_time[:text]).to eq('1 hour 48 mins')
+        expect(road_trip.travel_time[:value]).to eq(6479)
+        expect(road_trip.arrival_forecast[:temperature]).to eq(63.46)
+        expect(road_trip.arrival_forecast[:description]).to eq('Clear Sky')
+      end
     end
   end
 end

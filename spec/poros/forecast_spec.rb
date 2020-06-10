@@ -33,7 +33,8 @@ RSpec.describe Forecast do
           expect(hour[:icon_url]).to include('http://openweathermap.org/img/w/')
           expect(hour[:icon_url]).to include('.png')
           expect(hour[:temperature]).to be_between(52, 76.69)
-          expect(hour.length).to eq(3)
+          expect(hour[:description]).to eq(hour[:description].titlecase)
+          expect(hour.length).to eq(4)
         end
 
         expect(forecast.daily.length).to eq(8)

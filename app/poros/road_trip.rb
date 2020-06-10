@@ -1,11 +1,11 @@
 class RoadTrip
-  attr_reader :id, :start_location, :end_location, :travel_time, :forecast
+  attr_reader :id, :origin, :destination, :travel_time, :arrival_forecast
 
   def initialize(road_trip_info)
     @origin = road_trip_info[:origin]
     @destination = road_trip_info[:destination]
     @travel_time = road_trip_info[:travel_time]
-    @forecast = road_trip_info[:forecast]
+    @arrival_forecast = road_trip_info[:arrival_forecast]
   end
 
   def self.plan(road_trip_params)
@@ -14,12 +14,13 @@ class RoadTrip
 
     directions = Directions.search(road_trip_params[:origin], road_trip_params[:destination])
     forecast = Forecast.search(road_trip_params[:destination])
-    arrival_forecast = forecast.at_time(Time.now + directions.travel_time[:value])
+    arrival_time = Time.now.to_i + directions.travel_time[:value]
+    arrival_forecast = forecast.at_time(arrival_time)
     road_trip_info = {
       origin: directions.origin,
       destination: directions.destination,
-      travel_time: directions.travel_time[:text],
-      forecast: arrival_forecast
+      travel_time: directions.travel_time,
+      arrival_forecast: arrival_forecast
 
     }
     new(road_trip_info)

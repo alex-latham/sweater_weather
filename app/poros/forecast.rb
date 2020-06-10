@@ -10,8 +10,8 @@ class Forecast
   end
 
   def at_time(time)
-
-
+    forecast = @hourly.reverse.detect { |hour| hour[:time] < time }
+    { temperature: forecast[:temperature], description: forecast[:description] }
   end
 
   def self.search(location)
@@ -50,6 +50,7 @@ class Forecast
       hour_json[:time] = hour_json[:dt]
       hour_json[:icon_url] = icon_url(hour_json[:weather][0][:icon])
       hour_json[:temperature] = hour_json[:temp]
+      hour_json[:description] = hour_json[:weather][0][:description].titlecase
       filter(hour_json, :hour)
     end
   end
@@ -73,7 +74,7 @@ class Forecast
       json.slice(:time, :temperature, :icon_url, :description, :sunrise,
         :sunset, :feels_like, :humidity, :uv_index, :uv_rating, :visibility)
     when :hour
-      json.slice(:time, :icon_url, :temperature)
+      json.slice(:time, :icon_url, :temperature, :description)
     when :day
       json.slice(:time, :icon_url, :summary, :min_temperature,
         :max_temperature, :rain)
