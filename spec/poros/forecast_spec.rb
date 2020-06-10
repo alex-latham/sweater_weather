@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Forecast do
   describe 'class methods' do
-    it 'search' do
+    it 'search(portland,or)' do
       VCR.use_cassette('forecast portland') do
         forecast = Forecast.search('portland,or')
 
@@ -14,7 +14,7 @@ RSpec.describe Forecast do
         expect(forecast.location[:region]).to eq('OR')
         expect(forecast.location[:country]).to eq('United States')
 
-        expect(forecast.current[:datetime]).to eq(1591659238)
+        expect(forecast.current[:time]).to eq(1591659238)
         expect(forecast.current[:sunrise]).to eq(1591618941)
         expect(forecast.current[:sunset]).to eq(1591675063)
         expect(forecast.current[:temperature]).to eq(63.1)
@@ -29,7 +29,7 @@ RSpec.describe Forecast do
 
         expect(forecast.hourly.length).to eq(48)
         forecast.hourly.each do |hour|
-          expect(hour[:datetime]).to be_between(1591657200, 1591826400)
+          expect(hour[:time]).to be_between(1591657200, 1591826400)
           expect(hour[:icon_url]).to include('http://openweathermap.org/img/w/')
           expect(hour[:icon_url]).to include('.png')
           expect(hour[:temperature]).to be_between(52, 76.69)
@@ -38,7 +38,7 @@ RSpec.describe Forecast do
 
         expect(forecast.daily.length).to eq(8)
         forecast.daily.each do |day|
-          expect(day[:datetime]).to be_between(1591646400, 1592251200)
+          expect(day[:time]).to be_between(1591646400, 1592251200)
           expect(day[:icon_url]).to include('http://openweathermap.org/img/w/')
           expect(day[:icon_url]).to include('.png')
           expect(day[:summary]).to eq(day[:summary].titlecase)
@@ -50,7 +50,7 @@ RSpec.describe Forecast do
       end
     end
 
-    it 'uv_rating' do
+    it 'uv_rating(uv_index)' do
       expect(Forecast.uv_rating(0)).to be_nil
       expect(Forecast.uv_rating(1)).to eq('low')
       expect(Forecast.uv_rating(2)).to eq('low')
