@@ -30,7 +30,7 @@ class Location
       component[:types].include?(type)
     end
     return if address_component.nil?
-    
-    type == 'country' ? address_component[:long_name]: address_component[:short_name]
+
+    type == 'country' ? address_component[:long_name] : address_component[:short_name]
   end
 end

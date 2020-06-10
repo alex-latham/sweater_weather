@@ -11,19 +11,20 @@ class Directions
     directions_json = GoogleMapsServices.new.get_directions(origin, destination)
     origin = Location.search(origin)
     destination = Location.search(destination)
-    directions_info = {
+    directions_info = prepare_directions_info(directions_json, origin, destination)
+    new(directions_info)
+  end
+
+  def self.prepare_directions_info(directions_json, origin, destination)
+    {
       origin: {
-        city: origin.city,
-        region: origin.region,
-        country: origin.country
+        city: origin.city, region: origin.region, country: origin.country
       },
       destination: {
-        city: destination.city,
-        region: destination.region,
+        city: destination.city, region: destination.region,
         country: destination.country
       },
       travel_time: directions_json[:routes][0][:legs][0][:duration]
     }
-    new(directions_info)
   end
 end

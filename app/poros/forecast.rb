@@ -73,32 +73,23 @@ class Forecast
 
   def self.filter(json, type)
     case type
-    when :current
-      json.slice(:time, :temperature, :icon_url, :description, :sunrise,
-        :sunset, :feels_like, :humidity, :uv_index, :uv_rating, :visibility
-      )
-    when :hour
-      json.slice(:time, :icon_url, :temperature, :description)
-    when :day
-      json.slice(:time, :icon_url, :summary, :min_temperature,
-        :max_temperature, :rain
-      )
+    when :current then json.slice(
+      :time, :temperature, :icon_url, :description, :sunrise, :sunset,
+      :feels_like, :humidity, :uv_index, :uv_rating, :visibility
+    )
+    when :hour then json.slice(:time, :icon_url, :temperature, :description)
+    when :day then json.slice(
+      :time, :icon_url, :summary, :min_temperature, :max_temperature, :rain
+    )
     end
   end
 
   def self.uv_rating(uv_index)
-    if uv_index >= 11
-      'extreme'
-    elsif uv_index >= 8
-      'very high'
-    elsif uv_index >= 6
-      'high'
-    elsif uv_index >= 3
-      'moderate'
-    elsif uv_index >= 1
-      'low'
-    else
-      nil
+    if uv_index >= 11 then 'extreme'
+    elsif uv_index >= 8 then 'very high'
+    elsif uv_index >= 6 then 'high'
+    elsif uv_index >= 3 then 'moderate'
+    elsif uv_index >= 1 then 'low'
     end
   end
 

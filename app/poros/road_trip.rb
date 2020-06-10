@@ -14,13 +14,16 @@ class RoadTrip
     forecast = Forecast.search(road_trip_params[:destination])
     arrival_time = Time.now.to_i + directions.travel_time[:value]
     arrival_forecast = forecast.at_time(arrival_time)
-    road_trip_info = {
+    road_trip_info = prepare_road_trip_info(directions, arrival_forecast)
+    new(road_trip_info)
+  end
+
+  def self.prepare_road_trip_info(directions, arrival_forecast)
+    {
       origin: directions.origin,
       destination: directions.destination,
       travel_time: directions.travel_time[:text],
       arrival_forecast: arrival_forecast
-
     }
-    new(road_trip_info)
   end
 end
