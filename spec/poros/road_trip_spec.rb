@@ -4,6 +4,8 @@ RSpec.describe RoadTrip do
   describe 'class methods' do
     it 'plan(road_trip_params)' do
       VCR.use_cassette('road trip denver pueblo') do
+        allow(Time).to receive(:now).and_return(Time.new(2020, 6, 9, 19, 55))
+        
         user = create(:user)
 
         road_trip_params = {
@@ -22,7 +24,7 @@ RSpec.describe RoadTrip do
         expect(road_trip.destination[:region]).to eq('CO')
         expect(road_trip.destination[:country]).to eq('United States')
         expect(road_trip.travel_time).to eq('1 hour 48 mins')
-        expect(road_trip.arrival_forecast[:temperature]).to eq(63.46)
+        expect(road_trip.arrival_forecast[:temperature]).to eq(62.56)
         expect(road_trip.arrival_forecast[:description]).to eq('Clear Sky')
       end
     end

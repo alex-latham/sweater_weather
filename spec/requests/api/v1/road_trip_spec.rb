@@ -15,7 +15,7 @@ RSpec.describe 'Client', type: :request do
 
       post api_v1_road_trip_path(params: road_trip_params)
 
-      expect(response).to be_successful
+      expect(response).to have_http_status(200)
 
       json = JSON.parse(response.body, symbolize_names: true)
 
@@ -32,9 +32,24 @@ RSpec.describe 'Client', type: :request do
       expect(json[:data][:attributes][:destination][:region]).to eq('CO')
       expect(json[:data][:attributes][:destination][:country]).to eq('United States')
       expect(json[:data][:attributes][:travel_time]).to eq('1 hour 48 mins')
-      expect(json[:data][:attributes][:arrival_forecast][:time]).to eq(1591760579)
-      expect(json[:data][:attributes][:arrival_forecast][:temperature]).to eq(63.46)
+      expect(json[:data][:attributes][:arrival_forecast][:temperature]).to eq(62.56)
       expect(json[:data][:attributes][:arrival_forecast][:description]).to eq('Clear Sky')
     end
+  end
+
+  it 'cannot post a road trip with bad api key' do
+    road_trip_params = {
+      origin: 'denver,co',
+      destination: 'pueblo,co',
+      api_key: 'key'
+    }
+
+    post api_v1_road_trip_path(params: road_trip_params)
+
+    expect(response).to have_http_status(401)
+
+    json = JSON.parse(response.body, symbolize_names: true)
+
+    expect(json[:error]).to eq('Could not authenticate API key')
   end
 end

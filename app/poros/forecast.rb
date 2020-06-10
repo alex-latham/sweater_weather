@@ -10,9 +10,8 @@ class Forecast
   end
 
   def at_time(time)
-    forecast = @hourly.reverse.detect { |hour| hour[:time] < time }
+    forecast = @hourly.min { |hour| (time - hour[:time]).abs }
     {
-      time: time, 
       temperature: forecast[:temperature],
       description: forecast[:description]
     }

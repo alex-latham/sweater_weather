@@ -3,10 +3,11 @@ module Api
     class SessionsController < ApplicationController
       def create
         user = User.find_by(email: session_params[:email])
-        if user.authenticate(session_params[:password])
+        if user.present? && user.authenticate(session_params[:password])
           render json: UserSerializer.new(user)
         else
-          render json: UserSerializer.new(user), status: :unauthorized
+          error = 'Bad email/password combination'
+          render json: { error: error }, status: :unauthorized
         end
       end
 
