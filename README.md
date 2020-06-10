@@ -18,6 +18,9 @@ Visit the [Geocoding API page](https://console.cloud.google.com/apis/library/geo
 ## Register for a OpenWeather API Key
 Follow the instructions at [OpenWeather's API Guide](https://openweathermap.org/guide#how) to obtain a key.
 
+## Register for an Unsplash Client ID
+Follow the instructions at [Unsplash API Documentation](https://unsplash.com/documentation#registering-your-application) to obtain a key.
+
 ## Setup
 ```shell
 $ git clone git@github.com:alex-latham/sweater_weather.git
@@ -27,6 +30,7 @@ $ bundle exec rake db:setup
 $ bundle exec figaro install
 $ echo GOOGLE_API_KEY: <Google_API_Key> >> config/application.yml
 $ echo OPEN_WEATHER_API_KEY: <OpenWeather_API_Key> >> config/application.yml
+$ echo UNSPLASH_CLIENT_ID: <Unsplash_Client_ID> >> config/application.yml
 $ rails server
 ```
 
