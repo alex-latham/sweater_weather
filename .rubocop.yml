@@ -28,10 +28,10 @@ Style/SafeNavigation:
   Enabled: true
 
 Metrics/AbcSize:
-  Enabled: true
+  Enabled: false
 
 Rails/UniqueValidationWithoutIndex:
-  Enabled: true
+  Enabled: false
 
 Layout/EmptyLinesAroundAttributeAccessor:
   Enabled: true
