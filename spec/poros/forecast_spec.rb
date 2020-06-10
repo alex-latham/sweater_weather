@@ -2,49 +2,56 @@ require 'rails_helper'
 
 RSpec.describe Forecast do
   describe 'class methods' do
-    it 'at_location' do
-      VCR.use_cassette('portland forecast poro') do
-        location = Location.from_name('portland,or')
-        forecast = Forecast.at_location(location)
+    it 'search(portland,or)' do
+      VCR.use_cassette('forecast portland') do
+        forecast = Forecast.search('portland,or')
+
+        expect(forecast).to be_a(Forecast)
 
         expect(forecast.id).to eq(nil)
-        expect(forecast.location).to eq('Portland, OR, USA')
 
-        expect(forecast.current).to have_key(:datetime)
-        expect(forecast.current).to have_key(:sunrise)
-        expect(forecast.current).to have_key(:sunset)
-        expect(forecast.current).to have_key(:temperature)
-        expect(forecast.current).to have_key(:feels_like)
-        expect(forecast.current).to have_key(:humidity)
-        expect(forecast.current).to have_key(:uv_index)
-        expect(forecast.current).to have_key(:uv_rating)
-        expect(forecast.current).to have_key(:visibility)
-        expect(forecast.current).to have_key(:icon_url)
-        expect(forecast.current).to have_key(:description)
+        expect(forecast.location[:city]).to eq('Portland')
+        expect(forecast.location[:region]).to eq('OR')
+        expect(forecast.location[:country]).to eq('United States')
+
+        expect(forecast.current[:time]).to eq(1591659238)
+        expect(forecast.current[:sunrise]).to eq(1591618941)
+        expect(forecast.current[:sunset]).to eq(1591675063)
+        expect(forecast.current[:temperature]).to eq(63.1)
+        expect(forecast.current[:feels_like]).to eq(59.22)
+        expect(forecast.current[:humidity]).to eq(51)
+        expect(forecast.current[:uv_index]).to eq(7.41)
+        expect(forecast.current[:uv_rating]).to eq('high')
+        expect(forecast.current[:visibility]).to eq(16093)
+        expect(forecast.current[:description]).to eq('Overcast Clouds')
+        expect(forecast.current[:icon_url]).to eq('http://openweathermap.org/img/w/04d.png')
         expect(forecast.current.length).to eq(11)
 
         expect(forecast.hourly.length).to eq(48)
         forecast.hourly.each do |hour|
-          expect(hour).to have_key(:datetime)
-          expect(hour).to have_key(:icon_url)
-          expect(hour).to have_key(:temperature)
-          expect(hour.length).to eq(3)
+          expect(hour[:time]).to be_between(1591657200, 1591826400)
+          expect(hour[:icon_url]).to include('http://openweathermap.org/img/w/')
+          expect(hour[:icon_url]).to include('.png')
+          expect(hour[:temperature]).to be_between(52, 76.69)
+          expect(hour[:description]).to eq(hour[:description].titlecase)
+          expect(hour.length).to eq(4)
         end
 
         expect(forecast.daily.length).to eq(8)
         forecast.daily.each do |day|
-          expect(day).to have_key(:datetime)
-          expect(day).to have_key(:max_temperature)
-          expect(day).to have_key(:min_temperature)
-          expect(day).to have_key(:icon_url)
-          expect(day).to have_key(:summary)
-          expect(day[:summary]).to eq(day[:summary].titleize)
+          expect(day[:time]).to be_between(1591646400, 1592251200)
+          expect(day[:icon_url]).to include('http://openweathermap.org/img/w/')
+          expect(day[:icon_url]).to include('.png')
+          expect(day[:summary]).to eq(day[:summary].titlecase)
+          expect(day[:rain]).to be_between(0.27, 19.48)
+          expect(day[:max_temperature]).to be_between(57.96, 76.66)
+          expect(day[:min_temperature]).to be_between(50.85, 59.09)
           expect(day.length).to eq(6)
         end
       end
     end
 
-    it 'uv_rating' do
+    it 'uv_rating(uv_index)' do
       expect(Forecast.uv_rating(0)).to be_nil
       expect(Forecast.uv_rating(1)).to eq('low')
       expect(Forecast.uv_rating(2)).to eq('low')

@@ -1,5 +1,6 @@
 class BackgroundSerializer
   include FastJsonapi::ObjectSerializer
 
-  attributes :url
+  set_type 'background'
+  link :url
 end

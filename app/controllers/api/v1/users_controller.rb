@@ -2,14 +2,13 @@ module Api
   module V1
     class UsersController < ApplicationController
       def create
-        return unless user_params[:password] == user_params[:password_confirmation]
-        user = User.new(
-          email: user_params[:email],
-          password: user_params[:password],
-          api_key: SecureRandom.hex(24)
-        )
+        user = User.initialize_account(user_params)
         if user.save
-          render json: UserSerializer.new(user)
+          render json: UserSerializer.new(user), status: :created
+        else
+          error = user.errors.full_messages.to_sentence
+          status = error.include?('taken') ? :conflict : :forbidden
+          render json: { error: error }, status: status
         end
       end
 

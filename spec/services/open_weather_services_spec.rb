@@ -2,58 +2,38 @@ require 'rails_helper'
 
 RSpec.describe OpenWeatherServices do
   it 'can retrieve weather json for a city' do
-    VCR.use_cassette('portland forecast json') do
-      location = Location.from_name('portland,or')
-      forecast_json = OpenWeatherServices.new.get_forecast(location)
+    VCR.use_cassette('forecast portland') do
+      location = Location.search('portland,or')
+      json = OpenWeatherServices.new.get_forecast(location)
 
-      expect(forecast_json[:current]).to have_key(:dt)
-      expect(forecast_json[:current]).to have_key(:sunrise)
-      expect(forecast_json[:current]).to have_key(:sunset)
-      expect(forecast_json[:current]).to have_key(:temp)
-      expect(forecast_json[:current]).to have_key(:feels_like)
-      expect(forecast_json[:current]).to have_key(:humidity)
-      expect(forecast_json[:current]).to have_key(:uvi)
-      expect(forecast_json[:current]).to have_key(:pressure)
-      expect(forecast_json[:current]).to have_key(:dew_point)
-      expect(forecast_json[:current]).to have_key(:clouds)
-      expect(forecast_json[:current]).to have_key(:wind_speed)
-      expect(forecast_json[:current]).to have_key(:wind_deg)
-      # expect(forecast_json[:current]).to have_key(:visibility)
-      expect(forecast_json[:current][:weather][0]).to have_key(:id)
-      expect(forecast_json[:current][:weather][0]).to have_key(:main)
-      expect(forecast_json[:current][:weather][0]).to have_key(:description)
-      expect(forecast_json[:current][:weather][0]).to have_key(:icon)
+      expect(json[:current][:dt]).to eq(1591659238)
+      expect(json[:current][:sunrise]).to eq(1591618941)
+      expect(json[:current][:sunset]).to eq(1591675063)
+      expect(json[:current][:temp]).to eq(63.1)
+      expect(json[:current][:feels_like]).to eq(59.22)
+      expect(json[:current][:humidity]).to eq(51)
+      expect(json[:current][:uvi]).to eq(7.41)
+      expect(json[:current][:visibility]).to eq(16093)
+      expect(json[:current][:weather][0][:description]).to eq('overcast clouds')
+      expect(json[:current][:weather][0][:icon]).to eq('04d')
 
-      expect(forecast_json[:hourly].length).to eq(48)
-      forecast_json[:hourly].each do |hour|
-        expect(hour).to have_key(:dt)
-        expect(hour).to have_key(:temp)
-        expect(hour).to have_key(:feels_like)
-        expect(hour).to have_key(:pressure)
-        expect(hour).to have_key(:dew_point)
-        expect(hour).to have_key(:clouds)
-        expect(hour).to have_key(:wind_speed)
-        expect(hour).to have_key(:wind_deg)
-        expect(hour[:weather][0]).to have_key(:id)
-        expect(hour[:weather][0]).to have_key(:main)
-        expect(hour[:weather][0]).to have_key(:description)
-        expect(hour[:weather][0]).to have_key(:icon)
+      expect(json[:hourly].length).to eq(48)
+      json[:hourly].each do |hour|
+        expect(hour[:dt]).to be_between(1591657200, 1591826400)
+        expect(hour[:weather][0][:icon]).to be_a(String)
+        expect(hour[:weather][0][:icon].chars.length).to eq(3)
+        expect(hour[:temp]).to be_between(52, 76.69)
       end
 
-      expect(forecast_json[:daily].length).to eq(8)
-      forecast_json[:daily].each do |day|
-        expect(day).to have_key(:dt)
-        # expect(day).to have_key(:rain)
-        expect(day[:temp]).to have_key(:min)
-        expect(day[:temp]).to have_key(:max)
-        expect(day[:temp]).to have_key(:day)
-        expect(day[:temp]).to have_key(:night)
-        expect(day[:temp]).to have_key(:eve)
-        expect(day[:temp]).to have_key(:morn)
-        expect(day[:weather][0]).to have_key(:id)
-        expect(day[:weather][0]).to have_key(:main)
-        expect(day[:weather][0]).to have_key(:description)
-        expect(day[:weather][0]).to have_key(:icon)
+      expect(json[:daily].length).to eq(8)
+      json[:daily].each do |day|
+        expect(day[:dt]).to be_between(1591646400, 1592251200)
+        expect(day[:weather][0][:icon]).to be_a(String)
+        expect(day[:weather][0][:icon].chars.length).to eq(3)
+        expect(day[:weather][0][:main]).to be_a(String)
+        expect(day[:rain]).to be_between(0.27, 19.48)
+        expect(day[:temp][:max]).to be_between(57.96, 76.66)
+        expect(day[:temp][:min]).to be_between(50.85, 59.09)
       end
     end
   end

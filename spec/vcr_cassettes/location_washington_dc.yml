@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://maps.googleapis.com/maps/api/geocode/json?address=denver,co&key=<GOOGLE_API_KEY>
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=dc,dc&key=<GOOGLE_API_KEY>
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Mon, 08 Jun 2020 23:43:26 GMT
+      - Tue, 09 Jun 2020 23:37:44 GMT
       Pragma:
       - no-cache
       Expires:
@@ -33,7 +33,7 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Goog-Maps-Metro-Area:
-      - Denver, CO
+      - Washington, DC
       Server:
       - mafe
       X-Xss-Protection:
@@ -41,7 +41,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       Server-Timing:
-      - gfet4t7; dur=51
+      - gfet4t7; dur=572
       Alt-Svc:
       - h3-27=":443"; ma=2592000,h3-25=":443"; ma=2592000,h3-T050=":443"; ma=2592000,h3-Q050=":443";
         ma=2592000,h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443";
@@ -56,18 +56,18 @@ http_interactions:
               {
                  "address_components" : [
                     {
-                       "long_name" : "Denver",
-                       "short_name" : "Denver",
+                       "long_name" : "Washington",
+                       "short_name" : "Washington",
                        "types" : [ "locality", "political" ]
                     },
                     {
-                       "long_name" : "Denver County",
-                       "short_name" : "Denver County",
+                       "long_name" : "District of Columbia",
+                       "short_name" : "District of Columbia",
                        "types" : [ "administrative_area_level_2", "political" ]
                     },
                     {
-                       "long_name" : "Colorado",
-                       "short_name" : "CO",
+                       "long_name" : "District of Columbia",
+                       "short_name" : "DC",
                        "types" : [ "administrative_area_level_1", "political" ]
                     },
                     {
@@ -76,39 +76,39 @@ http_interactions:
                        "types" : [ "country", "political" ]
                     }
                  ],
-                 "formatted_address" : "Denver, CO, USA",
+                 "formatted_address" : "Washington, DC, USA",
                  "geometry" : {
                     "bounds" : {
                        "northeast" : {
-                          "lat" : 39.91424689999999,
-                          "lng" : -104.6002959
+                          "lat" : 38.995548,
+                          "lng" : -76.90939299999999
                        },
                        "southwest" : {
-                          "lat" : 39.614431,
-                          "lng" : -105.109927
+                          "lat" : 38.7916449,
+                          "lng" : -77.119759
                        }
                     },
                     "location" : {
-                       "lat" : 39.7392358,
-                       "lng" : -104.990251
+                       "lat" : 38.9071923,
+                       "lng" : -77.03687069999999
                     },
                     "location_type" : "APPROXIMATE",
                     "viewport" : {
                        "northeast" : {
-                          "lat" : 39.91424689999999,
-                          "lng" : -104.6002959
+                          "lat" : 38.995548,
+                          "lng" : -76.90939299999999
                        },
                        "southwest" : {
-                          "lat" : 39.614431,
-                          "lng" : -105.109927
+                          "lat" : 38.7916449,
+                          "lng" : -77.119759
                        }
                     }
                  },
-                 "place_id" : "ChIJzxcfI6qAa4cR1jaKJ_j0jhE",
+                 "place_id" : "ChIJW-T2Wt7Gt4kRKl2I1CJFUsI",
                  "types" : [ "locality", "political" ]
               }
            ],
            "status" : "OK"
         }
-  recorded_at: Mon, 08 Jun 2020 23:43:26 GMT
+  recorded_at: Tue, 09 Jun 2020 23:37:44 GMT
 recorded_with: VCR 6.0.0

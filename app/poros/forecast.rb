@@ -9,85 +9,87 @@ class Forecast
     @daily = forecast_info[:daily]
   end
 
-  def upon_arrival(arrival_datetime)
-
+  def at_time(time)
+    forecast = @hourly.min { |hour| (time - hour[:time]).abs }
+    {
+      temperature: forecast[:temperature],
+      description: forecast[:description]
+    }
   end
 
-  def self.at_location(location)
+  def self.search(location)
+    location = Location.search(location)
     forecast_json = OpenWeatherServices.new.get_forecast(location)
     current = current(forecast_json[:current])
     hourly = hourly(forecast_json[:hourly])
     daily = daily(forecast_json[:daily])
-    forecast_info = {
-      location: location.name, current: current, hourly: hourly, daily: daily
-    }
+    forecast_info = prepare_forecast_info(location, current, hourly, daily)
     new(forecast_info)
+  end
+
+  def self.prepare_forecast_info(location, current, hourly, daily)
+    {
+      location: {
+        city: location.city, region: location.region, country: location.country
+      },
+      current: current, hourly: hourly, daily: daily
+    }
   end
 
   def self.current(current_json)
     weather = current_json[:weather][0]
-    current_json[:datetime] = current_json[:dt]
+    current_json[:time] = current_json[:dt]
     current_json[:icon_url] = icon_url(weather[:icon])
     current_json[:description] = weather[:description].titlecase
     current_json[:temperature] = current_json[:temp]
     current_json[:uv_index] = current_json[:uvi]
     current_json[:uv_rating] = uv_rating(current_json[:uvi])
     current_json[:visibility] ||= nil
-    filter_current(current_json)
-  end
-
-  def self.filter_current(current_json)
-    current_json.slice(
-      :datetime, :icon_url, :description, :sunrise, :sunset, :temperature,
-      :feels_like, :humidity, :uv_index, :uv_rating, :visibility
-    )
+    filter(current_json, :current)
   end
 
   def self.hourly(hourly_json)
     hourly_json.map do |hour_json|
-      hour_json[:datetime] = hour_json[:dt]
+      hour_json[:time] = hour_json[:dt]
       hour_json[:icon_url] = icon_url(hour_json[:weather][0][:icon])
       hour_json[:temperature] = hour_json[:temp]
-      filter_hour(hour_json)
+      hour_json[:description] = hour_json[:weather][0][:description].titlecase
+      filter(hour_json, :hour)
     end
-  end
-
-  def self.filter_hour(hour_json)
-    hour_json.slice(:datetime, :icon_url, :temperature)
   end
 
   def self.daily(daily_json)
     daily_json.map do |day_json|
       weather = day_json[:weather][0]
-      day_json[:datetime] = day_json[:dt]
+      day_json[:time] = day_json[:dt]
       day_json[:icon_url] = icon_url(weather[:icon])
       day_json[:summary] = weather[:main].titlecase
       day_json[:min_temperature] = day_json[:temp][:min]
       day_json[:max_temperature] = day_json[:temp][:max]
       day_json[:rain] ||= 0
-      filter_day(day_json)
+      filter(day_json, :day)
     end
   end
 
-  def self.filter_day(day_json)
-    day_json.slice(
-      :datetime, :icon_url, :summary, :min_temperature, :max_temperature, :rain
+  def self.filter(json, type)
+    case type
+    when :current then json.slice(
+      :time, :temperature, :icon_url, :description, :sunrise, :sunset,
+      :feels_like, :humidity, :uv_index, :uv_rating, :visibility
     )
+    when :hour then json.slice(:time, :icon_url, :temperature, :description)
+    when :day then json.slice(
+      :time, :icon_url, :summary, :min_temperature, :max_temperature, :rain
+    )
+    end
   end
 
   def self.uv_rating(uv_index)
-    if uv_index >= 11
-      'extreme'
-    elsif uv_index >= 8
-      'very high'
-    elsif uv_index >= 6
-      'high'
-    elsif uv_index >= 3
-      'moderate'
-    elsif uv_index >= 1
-      'low'
-    else
-      nil
+    if uv_index >= 11 then 'extreme'
+    elsif uv_index >= 8 then 'very high'
+    elsif uv_index >= 6 then 'high'
+    elsif uv_index >= 3 then 'moderate'
+    elsif uv_index >= 1 then 'low'
     end
   end
 
