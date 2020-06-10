@@ -23,17 +23,17 @@ class Forecast
     current = current(forecast_json[:current])
     hourly = hourly(forecast_json[:hourly])
     daily = daily(forecast_json[:daily])
-    forecast_info = {
-      location: {
-        city: location.city,
-        region: location.region,
-        country: location.country
-      },
-      current: current,
-      hourly: hourly,
-      daily: daily
-    }
+    forecast_info = prepare_forecast_info(location, current, hourly, daily)
     new(forecast_info)
+  end
+
+  def self.prepare_forecast_info(location, current, hourly, daily)
+    {
+      location: {
+        city: location.city, region: location.region, country: location.country
+      },
+      current: current, hourly: hourly, daily: daily
+    }
   end
 
   def self.current(current_json)
@@ -75,12 +75,14 @@ class Forecast
     case type
     when :current
       json.slice(:time, :temperature, :icon_url, :description, :sunrise,
-        :sunset, :feels_like, :humidity, :uv_index, :uv_rating, :visibility)
+        :sunset, :feels_like, :humidity, :uv_index, :uv_rating, :visibility
+      )
     when :hour
       json.slice(:time, :icon_url, :temperature, :description)
     when :day
       json.slice(:time, :icon_url, :summary, :min_temperature,
-        :max_temperature, :rain)
+        :max_temperature, :rain
+      )
     end
   end
 
