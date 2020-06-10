@@ -52,4 +52,20 @@ RSpec.describe 'Client', type: :request do
 
     expect(json[:error]).to eq('Could not authenticate API key')
   end
+
+  it 'cannot post a road trip with no api key' do
+    road_trip_params = {
+      origin: 'denver,co',
+      destination: 'pueblo,co',
+      api_key: nil
+    }
+
+    post api_v1_road_trip_path(params: road_trip_params)
+
+    expect(response).to have_http_status(401)
+
+    json = JSON.parse(response.body, symbolize_names: true)
+
+    expect(json[:error]).to eq('Could not authenticate API key')
+  end
 end
