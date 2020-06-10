@@ -6,18 +6,19 @@ RSpec.describe 'Client' do
 
     expect(User.count).to eq(0)
 
-    post api_v1_users_path(
-      params: {
-        email: user.email,
-        password: user.password,
-        password_confirmation: user.password
-      }
-    )
+    user_params = {
+      email: user.email,
+      password: user.password,
+      password_confirmation: user.password
+    }
+
+    post api_v1_users_path(params: user_params)
+    
+    expect(response).to have_http_status(201)
+    expect(User.count).to eq(1)
 
     json = JSON.parse(response.body, symbolize_names: true)
 
-    expect(User.count).to eq(1)
-    expect(response).to have_http_status(201)
     expect(json[:data][:id]).to eq(User.last.id.to_s)
     expect(json[:data][:type]).to eq('users')
     expect(json[:data][:attributes][:email]).to eq(user.email)

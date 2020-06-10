@@ -11,7 +11,11 @@ class Forecast
 
   def at_time(time)
     forecast = @hourly.reverse.detect { |hour| hour[:time] < time }
-    { temperature: forecast[:temperature], description: forecast[:description] }
+    {
+      time: time, 
+      temperature: forecast[:temperature],
+      description: forecast[:description]
+    }
   end
 
   def self.search(location)

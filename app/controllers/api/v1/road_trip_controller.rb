@@ -3,13 +3,10 @@ module Api
     class RoadTripController < ApplicationController
       def create
         user = User.find_by(api_key: road_trip_params[:api_key])
-        origin = Location.by_name(road_trip_params[:origin])
-        destination = Location.by_name(road_trip_params[:destination])
-        road_trip = RoadTrip.new(user: user, origin: origin, destination: destination)
-        if user.exists?
-          render json: RoadTripSerializer.new(road_trip)
-        else
-        end
+        return unless user.present?
+
+        road_trip = RoadTrip.plan(road_trip_params)
+        render json: RoadTripSerializer.new(road_trip)
       end
 
       private

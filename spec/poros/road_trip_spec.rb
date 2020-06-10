@@ -21,8 +21,7 @@ RSpec.describe RoadTrip do
         expect(road_trip.destination[:city]).to eq('Pueblo')
         expect(road_trip.destination[:region]).to eq('CO')
         expect(road_trip.destination[:country]).to eq('United States')
-        expect(road_trip.travel_time[:text]).to eq('1 hour 48 mins')
-        expect(road_trip.travel_time[:value]).to eq(6479)
+        expect(road_trip.travel_time).to eq('1 hour 48 mins')
         expect(road_trip.arrival_forecast[:temperature]).to eq(63.46)
         expect(road_trip.arrival_forecast[:description]).to eq('Clear Sky')
       end
