@@ -26,11 +26,11 @@ Follow the instructions at [Unsplash API Documentation](https://unsplash.com/doc
 $ git clone git@github.com:alex-latham/sweater_weather.git
 $ cd sweater_weather
 $ bundle install
-$ bundle exec rake db:setup
 $ bundle exec figaro install
 $ echo GOOGLE_API_KEY: <Google_API_Key> >> config/application.yml
 $ echo OPEN_WEATHER_API_KEY: <OpenWeather_API_Key> >> config/application.yml
 $ echo UNSPLASH_CLIENT_ID: <Unsplash_Client_ID> >> config/application.yml
+$ bundle exec rake db:setup
 $ rails server
 ```
 
