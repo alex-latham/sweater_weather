@@ -33,6 +33,7 @@ group :development do
   gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen'
+  gem 'rake'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
