@@ -1,4 +1,5 @@
 # Sweater Weather [![Build Status](https://travis-ci.com/alex-latham/sweater_weather.svg?branch=master)](https://travis-ci.com/alex-latham/sweater_weather)
+Sweater Weather is a RESTful Rails API service for planning road trips. It works by collecting travel time and location information from Google's Geocoding API, using the location and time to find an appropriate forecast from OpenWeater, and finds a suitable background image for the location from Unsplash. This project was made to fulfill the endpoint specifications listed at [Sweater Weather](https://backend.turing.io/module3/projects/sweater_weather/requirements).
 
 ## Versions
 * Ruby 2.5.3
