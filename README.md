@@ -1,4 +1,4 @@
-# Sweater Weather
+# Sweater Weather [![Build Status](https://travis-ci.com/alex-latham/sweater_weather.svg?branch=master)](https://travis-ci.com/alex-latham/sweater_weather)
 
 ## Versions
 * Ruby 2.5.3
