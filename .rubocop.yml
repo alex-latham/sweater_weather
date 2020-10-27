@@ -69,5 +69,3 @@ Style/RedundantRegexpCharacterClass:
 Style/RedundantRegexpEscape:
   Enabled: true
 
-Style/SlicingWithRange:
-  Enabled: false
